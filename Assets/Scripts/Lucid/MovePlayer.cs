@@ -14,7 +14,7 @@ public class MovePlayer : MonoBehaviour
     // jump
     private float distToGround;
     private bool groundedPlayer;
-    private float jumpHeight = 1f;
+    private float jumpHeight = 0.30f;
     private float gravityValue = -9.81f;
     // ivy
     private bool insideIvy = false;
@@ -93,7 +93,7 @@ public class MovePlayer : MonoBehaviour
 
         if (groundedPlayer && Input.GetKeyDown(KeyCode.Space))
         {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -1.0f * gravityValue);
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -2f * gravityValue);
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -114,7 +114,7 @@ public class MovePlayer : MonoBehaviour
     bool IsGrounded()
     {
         RaycastHit hit;
-        bool did_hit = Physics.Raycast(transform.position, -Vector3.up, out hit, distToGround + 0.14f);
+        bool did_hit = Physics.Raycast(transform.position, -Vector3.up, out hit, distToGround + 0.0001f);
 
         return did_hit;
     }
