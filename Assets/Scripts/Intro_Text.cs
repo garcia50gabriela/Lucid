@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Intro_Text : MonoBehaviour
 {
@@ -87,17 +88,24 @@ public class Intro_Text : MonoBehaviour
 
     void play_next_text() 
     {
-        text_1.text = "";
-        text_2.text = "";
-        text_1_current = text_list[text_index];
-        text_2_current = text_list[text_index + 1];
-        if (text_1_current.Contains("_VALUE")) 
+        if (text_index >= text_list.Length)
         {
-            text_1_current = text_1_current.Replace("NAME_VALUE", GameData.user_inputs["NAME_INPUT"]);
+            SceneManager.LoadScene("Lucid");
         }
-        
-        StartCoroutine("PlayText");
-        text_index += 2;
+        else 
+        {
+            text_1.text = "";
+            text_2.text = "";
+            text_1_current = text_list[text_index];
+            text_2_current = text_list[text_index + 1];
+            if (text_1_current.Contains("_VALUE"))
+            {
+                text_1_current = text_1_current.Replace("NAME_VALUE", GameData.user_inputs["NAME_INPUT"]);
+            }
+
+            StartCoroutine("PlayText");
+            text_index += 2;
+        }
     }
 
     IEnumerator PlayText()
@@ -107,10 +115,13 @@ public class Intro_Text : MonoBehaviour
             text_1.text += c;
             yield return new WaitForSeconds(0.1f);
         }
-        foreach (char c in text_2_current)
+        if (!text_2_current.Contains("_INPUT") && !text_2_current.Contains("_DROPDOWN")) 
         {
-            text_2.text += c;
-            yield return new WaitForSeconds(0.1f);
+            foreach (char c in text_2_current)
+            {
+                text_2.text += c;
+                yield return new WaitForSeconds(0.1f);
+            }
         }
     }
 
