@@ -15,6 +15,8 @@ TagManager:
   - water
   - block
   - mountain
+  - checkpoint
+  - storyCheckpoint
   layers:
   - Default
   - TransparentFX

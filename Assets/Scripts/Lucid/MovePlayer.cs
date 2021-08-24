@@ -10,11 +10,11 @@ public class MovePlayer : MonoBehaviour
     // movement
     private CharacterController controller;
     private Vector3 playerVelocity;
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 2.5f;
     // jump
     private float distToGround;
     private bool groundedPlayer;
-    private float jumpHeight = 0.30f;
+    private float jumpHeight = 0.20f;
     private float gravityValue = -9.81f;
     // ivy
     private bool insideIvy = false;
@@ -36,24 +36,26 @@ public class MovePlayer : MonoBehaviour
 
     void Update()
     {
-        if (insideIvy)
+        if (!GameData.story_mode) 
         {
-            apply_vine_movement();
-        }
-        else 
-        {
-            apply_movement();
-        }
+            if (insideIvy)
+            {
+                apply_vine_movement();
+            }
+            else
+            {
+                apply_movement();
+            }
 
-        if (insideBlock) 
-        {
-            check_for_block_activate();
+            if (insideBlock)
+            {
+                check_for_block_activate();
+            }
+            if (insideIvyTrigger)
+            {
+                check_for_ivy_activate();
+            }
         }
-        if (insideIvyTrigger)
-        {
-            check_for_ivy_activate();
-        }
-
         respawn_if_fallen();
     }
 
@@ -70,9 +72,9 @@ public class MovePlayer : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
-        Vector3 lower_pos = new Vector3(transform.position.x, transform.position.y-0.5f, transform.position.z);
-        Vector3 higher_pos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-        if (!Physics.Raycast(lower_pos, transform.TransformDirection(Vector3.right), 0.25f) && !Physics.Raycast(higher_pos, transform.TransformDirection(Vector3.right), 0.25f))
+        Vector3 lower_pos = new Vector3(transform.position.x, transform.position.y-0.05f, transform.position.z);
+        Vector3 higher_pos = new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z);
+        if (!Physics.Raycast(lower_pos, transform.TransformDirection(Vector3.right), 0.025f) && !Physics.Raycast(higher_pos, transform.TransformDirection(Vector3.right), 0.025f))
         {
             Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed / 100f), 0f);
         }
@@ -81,7 +83,7 @@ public class MovePlayer : MonoBehaviour
             Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed / 100f), 0f);
         }
         Vector3 move = new Vector3(0f, 0f, 0f);
-        if (!Physics.Raycast(lower_pos, transform.TransformDirection(Vector3.forward), 0.25f))
+        if (!Physics.Raycast(lower_pos, transform.TransformDirection(Vector3.forward), 0.0025f))
         {
             move = new Vector3(0f, 0f, Input.GetAxis("Vertical"));
         }
@@ -95,7 +97,7 @@ public class MovePlayer : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -2f * gravityValue);
         }
-
+         
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
         transform.position = new Vector3(0f, transform.position.y, transform.position.z);
@@ -114,7 +116,7 @@ public class MovePlayer : MonoBehaviour
     bool IsGrounded()
     {
         RaycastHit hit;
-        bool did_hit = Physics.Raycast(transform.position, -Vector3.up, out hit, distToGround + 0.0001f);
+        bool did_hit = Physics.Raycast(transform.position, -Vector3.up, out hit, distToGround + 0.001f);
 
         return did_hit;
     }

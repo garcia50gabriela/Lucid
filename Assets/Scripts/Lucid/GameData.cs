@@ -8,4 +8,6 @@ public static class GameData
     public static Vector3 start_position;
     public static Quaternion start_rotation;
     public static Dictionary<string, string> user_inputs = new Dictionary<string, string>();
+    public static bool story_mode = false;
+    public static int story_index = 0;
 }
