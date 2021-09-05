@@ -11,6 +11,7 @@ public class Intro_Text : MonoBehaviour
     private string text_1_current = "";
     private string text_2_current = "";
     public GameObject text_input;
+    public InputField text_input2;
     private string current_input;
     public Dropdown dropdown_input;
     public GameObject dropdown_parent;
@@ -74,8 +75,9 @@ public class Intro_Text : MonoBehaviour
         if (text_2_current.Contains("_INPUT"))
         {
             GameData.user_inputs.Add(current_input, text_input_value.text);
+            text_input_value.text = string.Empty;
+            text_input2.text = string.Empty;
             text_input.SetActive(false);
-            text_input_value.text = "";
         }
         if (text_2_current.Contains("_DROPDOWN"))
         {
@@ -94,8 +96,11 @@ public class Intro_Text : MonoBehaviour
         }
         else 
         {
+            StopCoroutine("PlayText");
             text_1.text = "";
             text_2.text = "";
+            text_1_current = "";
+            text_2_current = "";
             text_1_current = text_list[text_index];
             text_2_current = text_list[text_index + 1];
             if (text_1_current.Contains("_VALUE"))
@@ -132,6 +137,7 @@ public class Intro_Text : MonoBehaviour
         waiting_for_input = true;
         if (text.Contains("_INPUT"))
         {
+            text_input_value.text = string.Empty;
             text_input.SetActive(true);
         }
         if (text.Contains("_DROPDOWN"))

@@ -2223,6 +2223,7 @@ MonoBehaviour:
   text_1: {fileID: 334098176}
   text_2: {fileID: 1818325257}
   text_input: {fileID: 1436183308}
+  text_input2: {fileID: 1436183309}
   dropdown_input: {fileID: 1723825595}
   dropdown_parent: {fileID: 529467132}
   text_input_value: {fileID: 275118436}

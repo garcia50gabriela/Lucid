@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8493810675993049843}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 6.3017836, y: 5.819801, z: 6.366047}
+  m_Center: {x: 0.4659153, y: -0.09639488, z: -0.36951774}
 --- !u!114 &8356902072837793324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,4 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886052ac3e93b814593a5575051eb964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storyPanel: {fileID: 0}
+  storyText: {fileID: 0}
   mountain: {fileID: 0}
+  instance_story_part_index: 0

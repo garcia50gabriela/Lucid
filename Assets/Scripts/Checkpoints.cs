@@ -59,7 +59,6 @@ public class Checkpoints : MonoBehaviour
             if (Input.GetMouseButtonDown(0)) 
             {
                 story_list_index++;
-                print(story_list_index);
             }
             playNextText();
         }
@@ -88,6 +87,7 @@ public class Checkpoints : MonoBehaviour
         storyPanel.SetActive(true);
         GameData.story_mode = true;
         instance_story_mode = true;
+        GameData.journal_phase = instance_story_part_index;
     }
 
     void playNextText() 
