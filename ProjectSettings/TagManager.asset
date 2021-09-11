@@ -17,6 +17,7 @@ TagManager:
   - mountain
   - checkpoint
   - storyCheckpoint
+  - tower
   layers:
   - Default
   - TransparentFX

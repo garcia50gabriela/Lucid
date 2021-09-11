@@ -74,14 +74,14 @@ public class Intro_Text : MonoBehaviour
     {
         if (text_2_current.Contains("_INPUT"))
         {
-            GameData.user_inputs.Add(current_input, text_input_value.text);
+            GameData.user_inputs[current_input] = text_input_value.text;
             text_input_value.text = string.Empty;
             text_input2.text = string.Empty;
             text_input.SetActive(false);
         }
         if (text_2_current.Contains("_DROPDOWN"))
         {
-            GameData.user_inputs.Add(current_input, dropdown_input_value.text);
+            GameData.user_inputs[current_input] = dropdown_input_value.text;
             dropdown_parent.SetActive(false);
         }
         waiting_for_input = false;

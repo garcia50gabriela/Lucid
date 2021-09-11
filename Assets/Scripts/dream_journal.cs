@@ -6,14 +6,22 @@ using UnityEngine.UI;
 public class dream_journal : MonoBehaviour
 {
     public Text journalText;
+
     public GameObject Phase2Parent;
     public Text input_phase_2;
     public Dropdown input_field_2;
+    public GameObject dropdown2_gameobject;
     public Text input_field_2_text;
+
     public GameObject Phase3Parent;
     public Text input_phase_3;
     public Dropdown input_field_3;
+    public GameObject dropdown3_gameobject;
     public Text input_field_3_text;
+
+    public GameObject phase2fog;
+    public GameObject phase3fog;
+
     private string[] text_list = new string[] {
         "Now that I'm not dreaming, that place and time makes me feel...",
         "PLACE_FEELING_DROPDOWN",
@@ -34,7 +42,7 @@ public class dream_journal : MonoBehaviour
             "A " + GameData.user_inputs["HAPPENING_INPUT"] + " was going on, and I was with a " + GameData.user_inputs["PERSON_DROPDOWN"] + ".\n" +
             "The atmosphere was " + GameData.user_inputs["ATMOSPHERE_DROPDOWN"] + " and I felt " + GameData.user_inputs["FEELING_DROPDOWN"] + ".");
         input_phase_2.text = "Now that I'm not dreaming, that place and time makes me feel...";
-        input_phase_2.text = "In real life doing that thing with that person is something I...";
+        input_phase_3.text = "In real life doing that thing with that person is something I...";
     }
 
     // Update is called once per frame
@@ -61,6 +69,8 @@ public class dream_journal : MonoBehaviour
         GameData.user_inputs.Add("PLACE_FEELING_DROPDOWN", input_field_2_text.text);
         Phase2Parent.SetActive(false);
         input_phase_2.text = "When I'm not dreaming that place and time makes me feel " + input_field_2_text.text;
+        dropdown2_gameobject.SetActive(false);
+        phase2fog.SetActive(false);
     }
 
     public void save_phase_3()
@@ -68,5 +78,7 @@ public class dream_journal : MonoBehaviour
         GameData.user_inputs.Add("THING_FEELING_DROPDOWN", input_field_3_text.text);
         Phase3Parent.SetActive(false);
         input_phase_3.text = "Doing that thing with that person is something I " + input_field_3_text.text;
+        dropdown3_gameobject.SetActive(false);
+        phase3fog.SetActive(false);
     }
 }

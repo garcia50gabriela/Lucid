@@ -64,7 +64,7 @@ public class IvyDrawer : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.tag == "mountain") 
+            if (hit.transform.tag == "mountain")
             {
                 IvyInstantiationTimer -= Time.deltaTime;
                 if (IvyInstantiationTimer <= 0)
@@ -81,6 +81,19 @@ public class IvyDrawer : MonoBehaviour
                         firstClick = true;
                     }
                     IvyInstantiationTimer = 0.02f;
+                }
+            }
+            if (hit.transform.tag == "tower")
+            {
+                float dist_from_last_ivy = Vector3.Distance(hit.point, lastIvy.transform.position);
+                if (dist_from_last_ivy < Mathf.Abs(0.1f))
+                {
+
+                    lastIvy = Instantiate(ivy, hit.point, ivy.transform.rotation, wallParent.transform);
+                    var rot = mountainParent.transform.rotation;
+                    rot.y = -rot.y;
+                    lastIvy.transform.localRotation = rot;
+                    firstClick = true;
                 }
             }
         }

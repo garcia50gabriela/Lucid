@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Checkpoints : MonoBehaviour
 {
@@ -72,6 +73,10 @@ public class Checkpoints : MonoBehaviour
             if (gameObject.tag == "storyCheckpoint" && !GameData.story_mode && !instance_story_mode) 
             {
                 storyCheckpoint();
+            }
+            if (instance_story_part_index == 5) 
+            {
+                SceneManager.LoadScene("tower");
             }
             
         }
