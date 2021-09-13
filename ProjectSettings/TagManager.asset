@@ -18,6 +18,7 @@ TagManager:
   - checkpoint
   - storyCheckpoint
   - tower
+  - journal
   layers:
   - Default
   - TransparentFX
