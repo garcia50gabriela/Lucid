@@ -22,12 +22,10 @@ public class Intro_Text : MonoBehaviour
     private int text_index = 0;
     private bool waiting_for_input = false;
     private string[] text_list = new string[] {
-        "Hello,",
-        "This is your dream journal.",
-        "What is your name?",
+        "This journal belongs to...",
         "NAME_INPUT",
-        $"Well, NAME_VALUE You haven't written in me in a while...",
-        "...can you write about a recent dream you had?",
+        $"I haven't written in my journal in a while.",
+        "I'm going to try to write about a recent dream.",
         "My dream took place in the...",
         "TIME_DAY_DROPDOWN",
         "I was at...",

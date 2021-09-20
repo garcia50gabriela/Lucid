@@ -73,11 +73,10 @@ public class IvyDrawer : MonoBehaviour
                     float dist_from_first_ivy = Vector3.Distance(hit.point, ivy.transform.position);
                     if (dist_from_last_ivy < Mathf.Abs(0.1f) && dist_from_first_ivy < Mathf.Abs(1f))
                     {
-                        //lastIvy = Instantiate(ivy, hit.point, ivy.transform.rotation, wallParent.transform); 
                         lastIvy = Instantiate(ivy, hit.point, ivy.transform.rotation, wallParent.transform);
-                        var rot = mountainParent.transform.rotation;
-                        rot.y = -rot.y;
-                        lastIvy.transform.localRotation = rot;
+                        //var rot = mountainParent.transform.rotation;
+                        //rot.y = -rot.y;
+                        //lastIvy.transform.localRotation = rot;
                         firstClick = true;
                     }
                     IvyInstantiationTimer = 0.02f;

@@ -10,11 +10,11 @@ public class MovePlayer : MonoBehaviour
     // movement
     private CharacterController controller;
     private Vector3 playerVelocity;
-    private float playerSpeed = 15f;
+    private float playerSpeed = 20f;
     // jump
     private float distToGround;
     private bool groundedPlayer;
-    private float jumpHeight = 0.20f;
+    private float jumpHeight = 0.50f;
     private float gravityValue = -9.81f;
     // ivy
     private bool insideIvy = false;
@@ -91,11 +91,11 @@ public class MovePlayer : MonoBehaviour
         {
             move = new Vector3(0f, 0f, Input.GetAxis("Vertical"));
         }
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        controller.Move(move * Time.deltaTime * playerSpeed/6);
 
         if (groundedPlayer && Input.GetKeyDown(KeyCode.Space))
         {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -2f * gravityValue);
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -1 * gravityValue);
         }
          
         playerVelocity.y += gravityValue * Time.deltaTime;

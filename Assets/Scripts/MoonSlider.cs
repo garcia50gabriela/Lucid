@@ -21,11 +21,11 @@ public class MoonSlider : MonoBehaviour
 
         if (waxing_pressed) 
         {
-            gameObject.transform.Rotate(0f, 0.1f, 0f);
+            gameObject.transform.Rotate(0f, 50f * Time.deltaTime, 0f);
         }
         if (waning_pressed)
         {
-            gameObject.transform.Rotate(0f, -0.1f, 0f);
+            gameObject.transform.Rotate(0f, -50f * Time.deltaTime, 0f);
         }
     }
 
