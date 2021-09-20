@@ -10,7 +10,7 @@ public class MovePlayer : MonoBehaviour
     // movement
     private CharacterController controller;
     private Vector3 playerVelocity;
-    private float playerSpeed = 2.5f;
+    private float playerSpeed = 15f;
     // jump
     private float distToGround;
     private bool groundedPlayer;
@@ -62,7 +62,7 @@ public class MovePlayer : MonoBehaviour
     void apply_vine_movement() 
     {
         transform.position = new Vector3(transform.position.x, ivyPos.y, transform.position.z);
-        Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed / 100f), 0f);
+        Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
     }
 
     void apply_movement()
@@ -76,11 +76,11 @@ public class MovePlayer : MonoBehaviour
         Vector3 higher_pos = new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z);
         if (!Physics.Raycast(lower_pos, transform.TransformDirection(Vector3.right), 0.025f) && !Physics.Raycast(higher_pos, transform.TransformDirection(Vector3.right), 0.025f))
         {
-            Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed / 100f), 0f);
+            Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
         }
         else if (Input.GetAxis("Horizontal") < 0)
         {
-            Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed / 100f), 0f);
+            Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
         }
         Vector3 move = new Vector3(0f, 0f, 0f);
         if (!Physics.Raycast(lower_pos, transform.TransformDirection(Vector3.forward), 0.0025f))

@@ -183,7 +183,20 @@ public class Checkpoints : MonoBehaviour
             }
             else 
             {
-                storyText.text = storyDict[instance_story_part_index][story_list_index];
+                var t = storyDict[instance_story_part_index][story_list_index];
+                if (t.StartsWith("[P]"))
+                {
+                    storyText.alignment = TextAnchor.UpperLeft;
+                    storyText.color = Color.black;
+                }
+                else if (t.StartsWith("[L]"))
+                {
+                    storyText.alignment = TextAnchor.UpperRight;
+                    storyText.color = Color.magenta;
+                }
+                t = t.Replace("[P] ", "");
+                t = t.Replace("[L] ", "");
+                storyText.text = t;
             }
         }
     }

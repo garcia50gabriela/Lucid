@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5017861453839163635}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -111,3 +111,6 @@ MonoBehaviour:
   storyPanel: {fileID: 0}
   storyText: {fileID: 0}
   mountain: {fileID: 0}
+  instance_story_part_index: 0
+  journal_background: {fileID: 0}
+  journal_portion: {fileID: 0}
