@@ -157,6 +157,7 @@ public class Checkpoints : MonoBehaviour
 
     void saveCheckpoint(Collider Col) 
     {
+        GameData.start_position = Col.transform.position;
         GameData.start_rotation = mountain.transform.rotation;
     }
 
