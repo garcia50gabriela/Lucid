@@ -8,6 +8,7 @@ public class IvyDrawer : MonoBehaviour
     public GameObject ivy;
     public GameObject wallParent;
     public GameObject mountainParent;
+    public GameObject IvyMesh;
     private bool mousePressed = false;
     private Vector3 check = new Vector3(0.1F, 0.1F, 0.1F);
     private GameObject lastIvy;
@@ -15,6 +16,9 @@ public class IvyDrawer : MonoBehaviour
     private bool firstClick = false;
     private float IvyInstantiationTimer = 0.05f;
     private float IvyDestroyTimer = 0.02f;
+    private int ivyColliderCounter = 0;
+    private Vector3 first_mesh_point;
+    private Vector3 last_mesh_point;
 
     private Camera cam;
     private float block_n, block_s, block_e, block_w;
@@ -51,10 +55,10 @@ public class IvyDrawer : MonoBehaviour
             timePassed += Time.deltaTime;
         }
 
-        /*if (timePassed > 15f)
+        if (timePassed > 15f)
         {
             expire_ivy();
-        }*/
+        }
     }
 
     void drawIvy()
@@ -78,8 +82,29 @@ public class IvyDrawer : MonoBehaviour
                         //rot.y = -rot.y;
                         //lastIvy.transform.localRotation = rot;
                         firstClick = true;
+                        ivyColliderCounter++;
+                        if (ivyColliderCounter == 1)
+                        {
+                            first_mesh_point = lastIvy.transform.position;
+                        }
+                        if (ivyColliderCounter == 6)
+                        {
+                            last_mesh_point = lastIvy.transform.position;
+                        }
+                        if (ivyColliderCounter >= 6) 
+                        {
+                            ivyColliderCounter = 0;
+                            var cal_rot = Mathf.Atan2(last_mesh_point.y - first_mesh_point.y, last_mesh_point.x - first_mesh_point.x);
+                            print(cal_rot);
+                            Instantiate(IvyMesh, lastIvy.transform.position, Quaternion.Euler(0f, 0f, Mathf.Rad2Deg*cal_rot-90), wallParent.transform);
+                        }
                     }
                     IvyInstantiationTimer = 0.02f;
+                    // click off to delete
+                    if (dist_from_last_ivy > 0.2) 
+                    {
+                        expire_ivy();
+                    }
                 }
             }
             if (hit.transform.tag == "tower")
@@ -93,6 +118,7 @@ public class IvyDrawer : MonoBehaviour
                     rot.y = -rot.y;
                     lastIvy.transform.localRotation = rot;
                     firstClick = true;
+                    ivyColliderCounter++;
                 }
             }
         }
@@ -104,6 +130,7 @@ public class IvyDrawer : MonoBehaviour
         timePassed = 0;
         firstClick = false;
         lastIvy = ivy;
+        ivyColliderCounter = 0;
         foreach (Transform child in wallParent.transform)
         {
             GameObject.Destroy(child.gameObject);

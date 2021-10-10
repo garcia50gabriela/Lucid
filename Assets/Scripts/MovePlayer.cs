@@ -6,6 +6,7 @@ public class MovePlayer : MonoBehaviour
 {
     public GameObject main_camera;
     public GameObject Mountains;
+    public GameObject MountainMesh;
 
     // movement
     private CharacterController controller;
@@ -24,6 +25,8 @@ public class MovePlayer : MonoBehaviour
     // block
     private bool insideBlock = false;
     private GameObject currentBlock;
+    // z calculation
+    private Vector3 mountain_bounds;
     
 
     void Start()
@@ -32,6 +35,8 @@ public class MovePlayer : MonoBehaviour
         distToGround = gameObject.GetComponent<BoxCollider>().bounds.extents.y;
         GameData.start_position = transform.position;
         GameData.start_rotation = Mountains.transform.rotation;
+
+        mountain_bounds = MountainMesh.GetComponent<Renderer>().bounds.size;
     }
 
     void Update()
@@ -45,11 +50,6 @@ public class MovePlayer : MonoBehaviour
             else
             {
                 apply_movement();
-            }
-
-            if (insideBlock)
-            {
-                check_for_block_activate();
             }
             if (insideIvyTrigger)
             {
@@ -83,14 +83,6 @@ public class MovePlayer : MonoBehaviour
             Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
         }
         Vector3 move = new Vector3(0f, 0f, 0f);
-        if (!Physics.Raycast(lower_pos, transform.TransformDirection(Vector3.forward), 0.0025f))
-        {
-            move = new Vector3(0f, 0f, Input.GetAxis("Vertical"));
-        }
-        else if (Input.GetAxis("Vertical") < 0)
-        {
-            move = new Vector3(0f, 0f, Input.GetAxis("Vertical"));
-        }
         controller.Move(move * Time.deltaTime * playerSpeed/6);
 
         if (groundedPlayer && Input.GetKeyDown(KeyCode.Space))
@@ -100,8 +92,19 @@ public class MovePlayer : MonoBehaviour
          
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
-        transform.position = new Vector3(0f, transform.position.y, transform.position.z);
+        transform.position = new Vector3(0f, transform.position.y, player_z_position());
         transform.eulerAngles = new Vector3(0f, 0f, 0f);
+    }
+
+    float player_z_position() 
+    {
+        var m_z = mountain_bounds.z / 2;
+        var m_y = mountain_bounds.y;
+        var m_c = MountainMesh.GetComponent<Renderer>().bounds.center.y;
+        var p_y = transform.position.y;
+        
+        var player_z = ((m_y - p_y) * m_z) / m_y;
+        return -(player_z + 0.2f);
     }
 
     void respawn_if_fallen()
@@ -169,14 +172,6 @@ public class MovePlayer : MonoBehaviour
         if (Col.gameObject.tag == "block")
         {
             insideBlock = false;
-        }
-    }
-
-    void check_for_block_activate()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            currentBlock.GetComponent<MountainBlock>().move_block();
         }
     }
 
