@@ -96,7 +96,7 @@ public class IvyDrawer : MonoBehaviour
                             ivyColliderCounter = 0;
                             var cal_rot = Mathf.Atan2(last_mesh_point.y - first_mesh_point.y, last_mesh_point.x - first_mesh_point.x);
                             print(cal_rot);
-                            Instantiate(IvyMesh, lastIvy.transform.position, Quaternion.Euler(0f, 0f, Mathf.Rad2Deg*cal_rot-90), wallParent.transform);
+                            Instantiate(IvyMesh, hit.point, Quaternion.Euler(10f, 0f, Mathf.Rad2Deg*cal_rot-90), wallParent.transform);
                         }
                     }
                     IvyInstantiationTimer = 0.02f;
