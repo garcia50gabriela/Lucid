@@ -121,7 +121,7 @@ public class Checkpoints : MonoBehaviour
     {
         if (GameData.story_mode && instance_story_mode && gameObject.tag == "storyCheckpoint")
         {
-            if (Input.GetMouseButtonDown(0)) 
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) 
             {
                 story_list_index++;
             }

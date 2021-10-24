@@ -15,8 +15,8 @@ public class MovePlayer : MonoBehaviour
     // jump
     private float distToGround;
     private bool groundedPlayer;
-    private float jumpHeight = 0.50f;
-    private float gravityValue = -9.81f;
+    private float jumpHeight = 0.3f;
+    private float gravityValue = -3f;
     // ivy
     private bool insideIvy = false;
     private bool insideIvyTrigger = false;
@@ -57,6 +57,7 @@ public class MovePlayer : MonoBehaviour
             }
         }
         respawn_if_fallen();
+        transform.position = new Vector3(0f, transform.position.y, player_z_position());
     }
 
     void apply_vine_movement() 
@@ -99,12 +100,11 @@ public class MovePlayer : MonoBehaviour
     float player_z_position() 
     {
         var m_z = mountain_bounds.z / 2;
-        var m_y = mountain_bounds.y;
-        var m_c = MountainMesh.GetComponent<Renderer>().bounds.center.y;
+        var m_y = mountain_bounds.y + 0.5f;
         var p_y = transform.position.y;
         
         var player_z = ((m_y - p_y) * m_z) / m_y;
-        return -(player_z + 0.2f);
+        return -(player_z + 0.15f);
     }
 
     void respawn_if_fallen()

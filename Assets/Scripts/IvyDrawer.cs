@@ -87,19 +87,18 @@ public class IvyDrawer : MonoBehaviour
                         {
                             first_mesh_point = lastIvy.transform.position;
                         }
-                        if (ivyColliderCounter == 6)
+                        if (ivyColliderCounter == 2)
                         {
                             last_mesh_point = lastIvy.transform.position;
                         }
-                        if (ivyColliderCounter >= 6) 
+                        if (ivyColliderCounter >= 2) 
                         {
                             ivyColliderCounter = 0;
                             var cal_rot = Mathf.Atan2(last_mesh_point.y - first_mesh_point.y, last_mesh_point.x - first_mesh_point.x);
-                            print(cal_rot);
                             Instantiate(IvyMesh, hit.point, Quaternion.Euler(10f, 0f, Mathf.Rad2Deg*cal_rot-90), wallParent.transform);
                         }
                     }
-                    IvyInstantiationTimer = 0.02f;
+                    IvyInstantiationTimer = 0.1f;
                     // click off to delete
                     if (dist_from_last_ivy > 0.2) 
                     {
