@@ -41,7 +41,7 @@ public class MovePlayer : MonoBehaviour
 
     void Update()
     {
-        if (!GameData.story_mode) 
+        if (!GameData.story_mode)
         {
             if (insideIvy)
             {
@@ -56,8 +56,20 @@ public class MovePlayer : MonoBehaviour
                 check_for_ivy_activate();
             }
         }
+        else 
+        {
+            just_apply_gravity();
+        }
         respawn_if_fallen();
         transform.position = new Vector3(0f, transform.position.y, player_z_position());
+    }
+
+    void just_apply_gravity() 
+    {
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+        transform.position = new Vector3(0f, transform.position.y, player_z_position());
+        transform.eulerAngles = new Vector3(0f, 0f, 0f);
     }
 
     void apply_vine_movement() 

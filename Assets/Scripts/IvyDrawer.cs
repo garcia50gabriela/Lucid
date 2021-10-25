@@ -68,7 +68,7 @@ public class IvyDrawer : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.tag == "mountain")
+            if (hit.transform.tag == "trellis")
             {
                 IvyInstantiationTimer -= Time.deltaTime;
                 if (IvyInstantiationTimer <= 0)
@@ -111,7 +111,7 @@ public class IvyDrawer : MonoBehaviour
                 float dist_from_last_ivy = Vector3.Distance(hit.point, lastIvy.transform.position);
                 if (dist_from_last_ivy < Mathf.Abs(0.1f))
                 {
-
+                    GameData.drawing_ivy = true;
                     lastIvy = Instantiate(ivy, hit.point, ivy.transform.rotation, wallParent.transform);
                     var rot = mountainParent.transform.rotation;
                     rot.y = -rot.y;
@@ -119,13 +119,26 @@ public class IvyDrawer : MonoBehaviour
                     firstClick = true;
                     ivyColliderCounter++;
                 }
+                else
+                {
+                    GameData.drawing_ivy = false;
+                }
             }
+            else 
+            {
+                GameData.drawing_ivy = false;
+            }
+        }
+        else
+        {
+            GameData.drawing_ivy = false;
         }
 
     }
 
     void expire_ivy()
     {
+        print("expire ivy");
         timePassed = 0;
         firstClick = false;
         lastIvy = ivy;

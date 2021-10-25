@@ -88,9 +88,6 @@ public class Checkpoints : MonoBehaviour
             "[P] So I can control my dreams, they don't have to mean anything if I dont want them too. hmm..",}
         },
         {11, new string[] {
-            "[P] This block kind of looks like the one on the other side of the mountain, If only this one was pushed out like that one was",}
-        },
-        {12, new string[] {
             "[L] This doesn't look good, the nightmares have already made it up the mountain.",
             "[P] What happens when the nightmares reach the castle?",
             "[L] Everything get's dark, and things go bad... It takes a long time and a lot of work to make them go away.",
@@ -98,7 +95,7 @@ public class Checkpoints : MonoBehaviour
             "[P] You should fly ahead to the castle and make sure it's alright, me and the flower will catch up.",
             "[L] Good idea I'll see you there!"}
         },
-        {13, new string[] {
+        {12, new string[] {
             "[P] whew, We made it now what?",
             "[L] This is bad.. really bad.. the castle is already crumbling",
             "[P] NO, it's going to be okay",
@@ -119,7 +116,7 @@ public class Checkpoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameData.story_mode && instance_story_mode && gameObject.tag == "storyCheckpoint")
+        if (instance_story_mode && gameObject.tag == "storyCheckpoint")
         {
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) 
             {
@@ -141,7 +138,7 @@ public class Checkpoints : MonoBehaviour
                 storyCheckpoint();
             }
             // last story checkpoint goes to next scene
-            if (instance_story_part_index == 14) 
+            if (instance_story_part_index == 13) 
             {
                 SceneManager.LoadScene("tower");
             }
@@ -171,34 +168,31 @@ public class Checkpoints : MonoBehaviour
 
     void playNextText() 
     {
-        if (GameData.story_mode) 
+        if (story_list_index == storyDict[instance_story_part_index].Length)
         {
-            if (story_list_index == storyDict[instance_story_part_index].Length)
-            {
                 GameData.story_mode = false;
                 instance_story_mode = false;
                 storyPanel.SetActive(false);
                 storyText.text = "";
                 story_list_index = 0;
                 gameObject.SetActive(false);
-            }
-            else 
+        }
+        else 
+        {
+            var t = storyDict[instance_story_part_index][story_list_index];
+            if (t.StartsWith("[P]"))
             {
-                var t = storyDict[instance_story_part_index][story_list_index];
-                if (t.StartsWith("[P]"))
-                {
-                    storyText.alignment = TextAnchor.UpperLeft;
-                    storyText.color = Color.black;
-                }
-                else if (t.StartsWith("[L]"))
-                {
-                    storyText.alignment = TextAnchor.UpperRight;
-                    storyText.color = Color.magenta;
-                }
-                t = t.Replace("[P] ", "");
-                t = t.Replace("[L] ", "");
-                storyText.text = t;
+                storyText.alignment = TextAnchor.UpperLeft;
+                storyText.color = Color.black;
             }
+            else if (t.StartsWith("[L]"))
+            {
+                storyText.alignment = TextAnchor.UpperRight;
+                storyText.color = Color.magenta;
+            }
+            t = t.Replace("[P] ", "");
+            t = t.Replace("[L] ", "");
+            storyText.text = t;
         }
     }
 

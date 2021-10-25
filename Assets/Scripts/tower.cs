@@ -26,7 +26,7 @@ public class tower : MonoBehaviour
             mousePressed = false;
         }
 
-        if (mousePressed) 
+        if (GameData.drawing_ivy && mousePressed) 
         { 
             float x_pos = (Input.mousePosition.x - Screen.width / 2) / 500f;
             gameObject.transform.Rotate(0f, x_pos, 0f);
