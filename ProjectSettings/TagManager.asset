@@ -20,6 +20,7 @@ TagManager:
   - tower
   - journal
   - trellis
+  - tower_trellis
   layers:
   - Default
   - TransparentFX

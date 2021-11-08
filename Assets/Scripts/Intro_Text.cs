@@ -24,13 +24,13 @@ public class Intro_Text : MonoBehaviour
     private string[] text_list = new string[] {
         "This journal belongs to...",
         "NAME_INPUT",
-        $"I haven't written in my journal in a while.",
-        "I'm going to try to write about a recent dream.",
-        "My dream took place in the...",
+        "I haven't written in my journal in a while.",
+        "Hmmm, I know! I'll write about a recent dream.",
+        "This dream took place in...",
         "TIME_DAY_DROPDOWN",
-        "I was at...",
+        "It all happened...",
         "LOCATION_DROPDOWN",
-        "I was with...",
+        "I was...",
         "PERSON_DROPDOWN",
         "The event taking place was...",
         "HAPPENING_INPUT",
@@ -38,12 +38,14 @@ public class Intro_Text : MonoBehaviour
         "FEELING_DROPDOWN",
         "The atmosphere felt...",
         "ATMOSPHERE_DROPDOWN",
+        "Sometimes I think dreams mean something,",
+        "and sometimes I'm not so sure."
     };
     private Dictionary<string, string[]> dropdown_options = new Dictionary<string, string[]>()
     {
-        {"TIME_DAY_DROPDOWN", new string[] {"Morning", "Afternoon", "Evening", "Midnight" } },
-        {"LOCATION_DROPDOWN", new string[] {"Home", "School", "Work", "Outdoors" } },
-        {"PERSON_DROPDOWN", new string[] {"Friend", "Family Member", "Collegue", "Significant Other", "Stranger" } },
+        {"TIME_DAY_DROPDOWN", new string[] {"the Morning", "the Afternoon", "the Evening", "the Night", "an insignificant time of day." } },
+        {"LOCATION_DROPDOWN", new string[] {"at Home", "at School", "at Work", "Outdoors", "in multiple locations" } },
+        {"PERSON_DROPDOWN", new string[] { "with a Friend", "with a Family Member", "with a Collegue", "with a Significant Other", "with a Stranger", "alone" } },
         {"FEELING_DROPDOWN", new string[] {"Happy", "Sad", "Worried", "Curious", "Excited", "Cautious" } },
         {"ATMOSPHERE_DROPDOWN", new string[] {"Erie", "Sterile", "Social", "Cozy", "Familiar", "Intimate" } },
     };

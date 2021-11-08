@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,93 +18,61 @@ public class Checkpoints : MonoBehaviour
         {0, new string[] {
             "[L] Hey! HEY!",
             "[L] Get OFF the flower bed!",
-            "[L] Noo, I think you killed all of them all!",
+            "[L] Noo, I think you killed them all!",
             "[P] I'm sorry I didn't...",
-            "[L] No you don't understand! These aren't just any flowers! They..",
+            "[L] No you don't understand!! These aren't just any flowers! They..",
             "[P] Oh! It looks like this one might be okay!",
-            "[L] I really hope so, for all our sakes... Okay, grab it and follow me...", }
+            "[L] I really hope so.. Okay, grab it and follow me...", }
         },
         {1, new string[] {
-            "[P] Where are we going?",
-            "[L] To the top of the mountain, that's where my castle is.",
+            "[P] So am I just going to keep following you all night?",
+            "[L] We're going to the top of the mountain, that's where my castle is. And there's only one path up.",
             "[P] ..castle?",
-            "[L] Yup, I'm Lucy, the queen of sleepy kingdom. Sorry, this isn't how we usually welcome guests",
+            "[L] Yup, I'm Lucy, the queen of sleepy kingdom.",
             "[P] But aren't you a moth?",
             "[L] And what about it?!?",
-            "[P] Oh nothing... uh so what do you do as the queen of sleepy kingdom?",
-            "[L] I keep this place running, fixing things, keeping our guests happy, tending to the Moon Flowers - like the one you have",
+            "[P] Oh nothing... uh so what do you do as the queen of sleepy kingdom? That must be fun",
+            "[L] It's hard work! I keep this place running, fixing things, keeping our guests happy, tending to the Moon Flowers - like the one you have",
             "[P] Right.."}
         },
         {2, new string[] {
-            "[P] Why are we stopping?",
-            "[L] I can fly ahead, but I'm not sure how you'll get over this cliff...",
-            "[P] Is there another path?",
-            "[L] No, there's only one path up the mountain... It's better that way..",
-            "[L] If the tide was higher, you might be able to jump onto that lilly pad to get up there",
-            "[L] Anyway, I'll fly ahead and let you figure it out.",
-            "[P] Do you want to take the flower incase I don't make it?",
-            "[L] Are you kidding me!? That flower is five times my size, I can't carry it. You're going to have to do it."}
+            "[P] You must really like these flowers, I'm sorry I crushed them.",
+            "[L] It's not that, they keep the nightmares away...",
+            "[L] Ever since I started tending to them the nightmares have stayed away.",
+            "[P] Nightmares? I have those sometimes, it feels like having your dreams taken from you.",
+            "[L] I don't have them. The Dreamer has them, and it's my job to keep them away."}
         },
         {3, new string[] {
-            "[P] Woah, did.. did the moon change?",
-            "[P] ...Did I do that somehow?",
-            "[P] No time to think about it now.. I'm just glad it worked." }
+            "[P] This Dreamer person must be pretty special to have someone taking care of their dreams like this.",
+            "[L] I guess so, I've never met them, per say. I just showed up here one day and figured out what to do after awhile.",
+            "[P] Sounds like you're meant to be here. Maybe I'll figure out why I'm here too.",
+            "[L] You're probably just a memory of someone The Dreamer knew. Memories float through here a lot... until they're forgotten.",
+            "[P] Well that's just great! So I'll be stuck here until I'm forgotten?? What then?",
+            "[L] I don't know! I'm stuck here too! I figured I might as well make it enjoyable for myself by keeping the place nice.",
+            "[L] Things go bad around here when the nightmares come."}
         },
         {4, new string[] {
-            "[P] What's that?",
-            "[P] That's weird it looks like one of my dream journal pages",
-            "[P] I think there's some unfinished writing on it, I don't remember doing that.",
-            "[P] I guess I'll go ahead and finish it?"}
+            "[L] I think the nightmares are making their way up the mountain.",
+            "[P] Ugh, I'm already stuck in someone else's dream, the last thing I want is to be stuck in their nightmare.",
+            "[L] You and me both!",
+            "[L] Maybe if The Dreamer came around here once and awhile, I could actually get something done around here."}
         },
         {5, new string[] {
-            "[L] Finally, I feel like I've been waiting FOREVER.",
-            "[L] I just wanted to stick around to tell you that you can climb this ivy. A lot of the plants here are very old and sturdy.",
-            "[P] Thanks, so why do we need to save this flower anyway?",
-            "[L] When they bloom, they keep the nightmares away... I'm not sure how exactly..",
-            "[L] But I've been trying to grow more ever since I figured it out..",
-            "[L] I was in the middle of pollinating them when you showed up and crushed them.",
-            "[P] Sorry about that, I'm not sure how that happened.. One moment I was in my room and the next...",
-            "[L] Okay, this isn't story time, let's keep moving!"
-            }
+            "[P] Hey, have you seen any loose paper along the path?",
+            "[L] What? We already have nightmares to worry about, now we have to worry about litterers too?!",
+            "[P] No, they actually look like my journal pages. I just don't know how they got here.",
+            "[L] Maybe you dropped them on your way in. You seem pretty clumsy.",
+            "[P] I've been thinking, maybe I'm the dreamer? Maybe I left them here as clues for myself.",
+            "[L] HA I think you would KNOW if you were The Dreamer. C'mon we don't have much time."}
         },
         {6, new string[] {
-            "[P] Oh, there's more of that Ivy",
-            "[P] If only it was a little longer, then I could use it to climb up"}
-        },
-        {7, new string[] {
-            "[P] Weird, I don't know why I can do these things...",}
-        },
-        {8, new string[] {
-            "[P] Another journal page! how did they get here?",}
-        },
-        {9, new string[] {
-            "[L] Oh good, you're here, I didn't think you'd make it!",
-            "[L] Hey, how have you been getting past all these obstacles anyway? I tried to make this path impossible to get through",
-            "[P] I'm not sure, I guess I can just control things when I need them.",
-            "[L] That is strange... In that case, I'm glad you're here. I've been protecting the castle by myself for so long, it's nice to have some help.",
-            "[P] Of course, It's the least I can do. I'm still trying to figure out why I'm here.",}
-        },
-        {10, new string[] {
-            "[P] So I can control my dreams, they don't have to mean anything if I dont want them too. hmm..",}
-        },
-        {11, new string[] {
-            "[L] This doesn't look good, the nightmares have already made it up the mountain.",
-            "[P] What happens when the nightmares reach the castle?",
-            "[L] Everything get's dark, and things go bad... It takes a long time and a lot of work to make them go away.",
-            "[L] Not to mention all the repairs the castle will need afterwards.",
-            "[P] You should fly ahead to the castle and make sure it's alright, me and the flower will catch up.",
-            "[L] Good idea I'll see you there!"}
-        },
-        {12, new string[] {
-            "[P] whew, We made it now what?",
-            "[L] This is bad.. really bad.. the castle is already crumbling",
-            "[P] NO, it's going to be okay",
-            "[L] What do you mean?",
-            "[P] This is my dream! I can control it! And I'm not going to let it turn into a nightmare!",
-            "[L] You're The Dreamer? It's so great to finally meet you!",
-            "[P] What can I do to make this flower bloom?",
-            "[L] Right, it needs plenty of moon light. More than usual, considering the state it's in. Maybe if you take it to the roof..",
-            "[P] I'm on my way!!"}
+            "[L] This looks bad, the nightmares have made it to the castle.",
+            "[P] I know my wake-self is out there, and I know they're listening..",
+            "[L] What are you talking about?",
+            "[P] Hey you! Yeah, YOU!!",
+            "[P] Listen, we can do this! I know things seem grim, but this is OUR dream, and I believe in us!",
+            "[L] Who are you talking to?!?",
+            "[P] You've helped us make it this far! We have a flower, and a dream to save. Let's go!"}
         },
     };
     // Start is called before the first frame update
@@ -138,7 +106,7 @@ public class Checkpoints : MonoBehaviour
                 storyCheckpoint();
             }
             // last story checkpoint goes to next scene
-            if (instance_story_part_index == 13) 
+            if (instance_story_part_index == 7) 
             {
                 SceneManager.LoadScene("tower");
             }

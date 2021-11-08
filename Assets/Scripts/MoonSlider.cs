@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoonSlider : MonoBehaviour
 {
     public Camera camera;
+    private bool mousePressed = false;
     private bool waxing_pressed = false;
     private bool waning_pressed = false;
     // Start is called before the first frame update
@@ -16,17 +17,22 @@ public class MoonSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var v3Pos = new Vector3(0.9f, 0.9f, 1.5f);
-        transform.position = camera.ViewportToWorldPoint(v3Pos);
-
-        if (waxing_pressed) 
+        if (Input.GetMouseButtonDown(0))
         {
-            gameObject.transform.Rotate(0f, 50f * Time.deltaTime, 0f);
+            mousePressed = true;
         }
-        if (waning_pressed)
+        if (Input.GetMouseButtonUp(0))
         {
-            gameObject.transform.Rotate(0f, -50f * Time.deltaTime, 0f);
+            mousePressed = false;
         }
+        if (Input.mousePosition.x > 1100 & Input.mousePosition.x < 1200 & Input.mousePosition.y > 500 & Input.mousePosition.y < 600) 
+        {
+            if (mousePressed)
+            {
+                transform.Rotate(new Vector3(0, -(1150 - Input.mousePosition.x) * 10, 0) * Time.deltaTime * 1f);
+            }
+        }
+        
     }
 
     public void start_waxing() 

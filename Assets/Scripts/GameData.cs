@@ -20,4 +20,5 @@ public static class GameData
     public static int story_index = 0;
     public static int journal_phase = 0;
     public static bool drawing_ivy = false;
+    public static Vector3 last_ivy_pos;
 }
