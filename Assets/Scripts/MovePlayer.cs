@@ -163,6 +163,11 @@ public class MovePlayer : MonoBehaviour
         {
             transform.parent = Col.gameObject.transform;
         }
+        if (Col.gameObject.tag == "nightmare") 
+        {
+            transform.position = GameData.start_position;
+            Mountains.transform.rotation = GameData.start_rotation;
+        }
     }
 
     void OnTriggerExit(Collider Col) 

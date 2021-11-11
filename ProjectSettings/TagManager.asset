@@ -21,6 +21,7 @@ TagManager:
   - journal
   - trellis
   - tower_trellis
+  - nightmare
   layers:
   - Default
   - TransparentFX

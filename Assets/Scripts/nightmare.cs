@@ -14,40 +14,28 @@ public class nightmare : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nightmare_start_rotation = transform.rotation;
+        nightmare_start_rotation = transform.localRotation;
         moon_start_rotation = moon.transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, direction, 0) * Time.deltaTime * 10f);
+        var offset = Mathf.Sin(moon.transform.rotation.eulerAngles.y * Mathf.Deg2Rad);
+        rot_min = -1 - offset;
+        rot_max = 1 + offset;
+
+        transform.Rotate(new Vector3(0, direction, 0) * Time.deltaTime * 10f, Space.Self);
         
-        if (transform.rotation.y <= nightmare_start_rotation.y - rot_min)
+        if (transform.localRotation.y <= nightmare_start_rotation.y + (rot_min/10f))
         {
             direction = 1f;
         }
-        if (transform.rotation.y >= nightmare_start_rotation.y + rot_max)
+        if (transform.localRotation.y >= nightmare_start_rotation.y + (rot_max/10f))
         {
             direction = -1f;
         }
 
-
-        var offset =  Mathf.Sin(moon.transform.rotation.eulerAngles.y * Mathf.Deg2Rad);
-        if (offset > 0) 
-        {
-            rot_max = 0.1f * offset;
-            rot_min = 0.1f;
-        }
-        if (offset < 0)
-        {
-            rot_min = Mathf.Abs( 0.1f * offset);
-            rot_max = 0.1f;
-        }
-        if (offset == 0)
-        {
-            rot_min = 0.1f;
-            rot_max = 0.1f;
-        }
+        
     }
 }
