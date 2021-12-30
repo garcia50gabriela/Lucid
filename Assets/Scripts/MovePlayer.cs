@@ -196,7 +196,17 @@ public class MovePlayer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            insideIvy = !insideIvy;
+            if (insideIvy)
+            {
+                insideIvy = !insideIvy;
+                insideIvyTrigger = false;
+                overlapIvy = 0;
+            }
+            else 
+            {
+                insideIvy = !insideIvy;
+            }
+            
         }
     }
 }

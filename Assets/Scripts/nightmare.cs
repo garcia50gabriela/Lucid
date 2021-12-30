@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,17 +21,17 @@ public class nightmare : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var offset = Mathf.Sin(moon.transform.rotation.eulerAngles.y * Mathf.Deg2Rad);
-        rot_min = -1 - offset;
-        rot_max = 1 + offset;
+        //var offset = Mathf.Sin(moon.transform.rotation.eulerAngles.y * Mathf.Deg2Rad);
+        rot_min = -1; //- offset;
+        rot_max = 1; //+ offset;
 
-        transform.Rotate(new Vector3(0, direction, 0) * Time.deltaTime * 10f, Space.Self);
+        transform.Rotate(new Vector3(0, direction, 0) * Time.deltaTime * 5f, Space.Self);
         
-        if (transform.localRotation.y <= nightmare_start_rotation.y + (rot_min/10f))
+        if (transform.localRotation.y <= nightmare_start_rotation.y + (rot_min/50f))
         {
             direction = 1f;
         }
-        if (transform.localRotation.y >= nightmare_start_rotation.y + (rot_max/10f))
+        if (transform.localRotation.y >= nightmare_start_rotation.y + (rot_max/50f))
         {
             direction = -1f;
         }

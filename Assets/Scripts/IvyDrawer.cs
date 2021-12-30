@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class IvyDrawer : MonoBehaviour
 {
-    public GameObject core_block;
     public GameObject ivy;
     public GameObject wallParent;
     public GameObject mountainParent;
