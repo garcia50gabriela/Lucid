@@ -19,13 +19,16 @@ public class Intro_Text : MonoBehaviour
     Dropdown.OptionData m_NewData;
     public Text text_input_value;
     public Text dropdown_input_value;
+    public Text date_text;
+    public Text header_text;
+
     private int text_index = 0;
     private bool waiting_for_input = false;
     private string[] text_list = new string[] {
+        "",
+        "Let's write about a recent dream...",
         "This journal belongs to...",
         "NAME_INPUT",
-        "I haven't written in my journal in a while.",
-        "Hmmm, I know! I'll write about a recent dream.",
         "This dream took place in...",
         "TIME_DAY_DROPDOWN",
         "It all happened...",
@@ -38,8 +41,10 @@ public class Intro_Text : MonoBehaviour
         "FEELING_DROPDOWN",
         "The atmosphere felt...",
         "ATMOSPHERE_DROPDOWN",
-        "Sometimes I think dreams mean something,",
-        "and sometimes I'm not so sure."
+        "Some other things I would like to make note of are:",
+        "OPEN_INPUT",
+        "",
+        "Sometimes I think dreams mean something, and sometimes I'm not so sure. Either way it's still fun to think about and appreciate the bizzare world that can only exist in *your* mind."
     };
     private Dictionary<string, string[]> dropdown_options = new Dictionary<string, string[]>()
     {
@@ -54,6 +59,7 @@ public class Intro_Text : MonoBehaviour
     {
         text_1.text = "";
         text_2.text = "";
+        date_text.text = System.DateTime.Now.ToShortDateString();
     }
 
     // Update is called once per frame
@@ -67,7 +73,15 @@ public class Intro_Text : MonoBehaviour
         {
             apply_input(text_2_current);
         }
-        
+        make_name_header();
+    }
+
+    void make_name_header() 
+    {
+        if (GameData.user_inputs["NAME_INPUT"] != "Name")
+        {
+            header_text.text = GameData.user_inputs["NAME_INPUT"] + "'s Dream";
+        }
     }
 
     public void submit_input() 
@@ -97,16 +111,19 @@ public class Intro_Text : MonoBehaviour
         else 
         {
             StopCoroutine("PlayText");
-            text_1.text = "";
+            if (current_input != null && current_input != "NAME_INPUT")
+            {
+                text_1.text = text_1.text.Replace("...", " " + GameData.user_inputs[current_input]) + ".\n";
+            }
+            else 
+            {
+                text_1.text = "";
+            }
             text_2.text = "";
             text_1_current = "";
             text_2_current = "";
             text_1_current = text_list[text_index];
             text_2_current = text_list[text_index + 1];
-            if (text_1_current.Contains("_VALUE"))
-            {
-                text_1_current = text_1_current.Replace("NAME_VALUE", GameData.user_inputs["NAME_INPUT"]);
-            }
 
             StartCoroutine("PlayText");
             text_index += 2;
@@ -118,14 +135,14 @@ public class Intro_Text : MonoBehaviour
         foreach (char c in text_1_current)
         {
             text_1.text += c;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
         if (!text_2_current.Contains("_INPUT") && !text_2_current.Contains("_DROPDOWN")) 
         {
             foreach (char c in text_2_current)
             {
                 text_2.text += c;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.05f);
             }
         }
     }

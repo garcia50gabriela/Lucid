@@ -17,7 +17,9 @@ public class journal_page : MonoBehaviour
     void Update()
     {
         journal_text.text = journal_text.text.Replace("<place time>", GameData.user_inputs["LOCATION_DROPDOWN"] + " during the " + GameData.user_inputs["TIME_DAY_DROPDOWN"]);
-        
+        journal_text.text = journal_text.text.Replace("<feeling>", GameData.user_inputs["FEELING_DROPDOWN"]);
+        journal_text.text = journal_text.text.Replace("<atmosphere>", GameData.user_inputs["ATMOSPHERE_DROPDOWN"]);
+
     }
 
     public void submit_and_close()

@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,7 +53,7 @@ public class Checkpoints : MonoBehaviour
         },
         {4, new string[] {
             "[L] I think the nightmares are making their way up the mountain.",
-            "[P] Ugh, I'm already stuck in someone else's dream, the last thing I want is to be stuck in their nightmare.",
+            "[P] Ugh, I'm already stuck in someone else's dream, the last thing I want is to be stuck in their nightmares.",
             "[L] You and me both!",
             "[L] Maybe if The Dreamer came around here once and awhile, I could actually get something done around here."}
         },
