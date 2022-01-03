@@ -13,9 +13,13 @@ public static class GameData
         {"LOCATION_DROPDOWN", "Home" },
         {"PERSON_DROPDOWN", "friend" },
         {"HAPPENING_INPUT", "a thing" },
-        {"", "happy" },
+        {"FEELING_DROPDOWN", "happy" },
         {"ATMOSPHERE_DROPDOWN", "erie" },
-        {"OPEN_INPUT", "" }
+        {"OPEN_INPUT", "I was watching tv but nothing was on." },
+        {"RELEVANT_PLACE_DROPDOWN", "is"},
+        {"FEEL_NOW_DROPDOWN", "confused" },
+        {"MEANING_DROPDOWN", "means something."},
+        {"MEANING_INPUT", "because I have strong feelings." }
     };
     public static bool story_mode = false;
     public static int story_index = 0;

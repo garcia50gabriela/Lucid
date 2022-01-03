@@ -478,6 +478,10 @@ PrefabInstance:
       propertyPath: instance_story_part_index
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4880419365875481644, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
+      propertyPath: lucy_avatar
+      value: 
+      objectReference: {fileID: 1078297308}
     - target: {fileID: 5017861453839163635, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
       propertyPath: m_Name
       value: StoryCheckpoint (4)
@@ -2909,6 +2913,10 @@ PrefabInstance:
       propertyPath: instance_story_part_index
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4880419365875481644, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
+      propertyPath: lucy_avatar
+      value: 
+      objectReference: {fileID: 1078297308}
     - target: {fileID: 5017861453839163635, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
       propertyPath: m_Name
       value: StoryCheckpoint (14)
@@ -3567,6 +3575,10 @@ PrefabInstance:
       propertyPath: instance_story_part_index
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4880419365875481644, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
+      propertyPath: lucy_avatar
+      value: 
+      objectReference: {fileID: 1078297308}
     - target: {fileID: 5017861453839163635, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
       propertyPath: m_Name
       value: StoryCheckpoint (5)
@@ -6382,6 +6394,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   journal_background: {fileID: 493574193}
   journal_text: {fileID: 0}
+  value_name: MEANING
+  drop_down_input: {fileID: 1294396550}
+  text_input: {fileID: 1425756454}
 --- !u!4 &246094953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 57db9c2f443d59440a331d9250aa1ff8, type: 3}
@@ -8892,6 +8907,81 @@ Transform:
   m_Father: {fileID: 1879211885}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &356074415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356074416}
+  - component: {fileID: 356074418}
+  - component: {fileID: 356074417}
+  m_Layer: 5
+  m_Name: lucy_image_angry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &356074416
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356074415}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1078297309}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 407.2, y: 57.9}
+  m_SizeDelta: {x: 385.71686, y: 382.2564}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &356074417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356074415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: aa8d8a6ea207a6c4c81c6cb1ab3458fc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &356074418
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356074415}
+  m_CullTransparentMesh: 0
 --- !u!1 &365160391
 GameObject:
   m_ObjectHideFlags: 0
@@ -14627,6 +14717,81 @@ Transform:
   m_Father: {fileID: 2005999826}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: -276.376, z: 0}
+--- !u!1 &618874627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 618874628}
+  - component: {fileID: 618874630}
+  - component: {fileID: 618874629}
+  m_Layer: 5
+  m_Name: lucy_image_happy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &618874628
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618874627}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1078297309}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 407.2, y: 57.9}
+  m_SizeDelta: {x: 385.71686, y: 382.2564}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &618874629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618874627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 97418f4090c66c647b9daaf98270ef42, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &618874630
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618874627}
+  m_CullTransparentMesh: 0
 --- !u!1001 &622337260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17729,6 +17894,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   journal_background: {fileID: 493574193}
   journal_text: {fileID: 926896294}
+  value_name: RELEVANT_PLACE
+  drop_down_input: {fileID: 50796130}
+  text_input: {fileID: 0}
 --- !u!1 &800069232
 GameObject:
   m_ObjectHideFlags: 0
@@ -24569,6 +24737,62 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077322175}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1078297308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1078297309}
+  - component: {fileID: 1078297310}
+  m_Layer: 5
+  m_Name: lucy_image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1078297309
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078297308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 618874628}
+  - {fileID: 356074416}
+  - {fileID: 1385540417}
+  - {fileID: 1738752953}
+  m_Father: {fileID: 1313383142}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1078297310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078297308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10975c1aca1644a4e850831934ceadd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  happy: {fileID: 618874627}
+  sad: {fileID: 1385540416}
+  angry: {fileID: 356074415}
+  worry: {fileID: 1738752952}
 --- !u!1 &1082021320
 GameObject:
   m_ObjectHideFlags: 0
@@ -29930,6 +30154,7 @@ RectTransform:
   m_Children:
   - {fileID: 755311364}
   - {fileID: 212281401}
+  - {fileID: 1078297309}
   m_Father: {fileID: 2014074784}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30951,6 +31176,10 @@ PrefabInstance:
       propertyPath: instance_story_part_index
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4880419365875481644, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
+      propertyPath: lucy_avatar
+      value: 
+      objectReference: {fileID: 1078297308}
     - target: {fileID: 5017861453839163635, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
       propertyPath: m_Name
       value: StoryCheckpoint (7)
@@ -31111,6 +31340,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4865774080417364070, guid: 14f5949538d2a9a4cbe6cb294e2703b0, type: 3}
   m_PrefabInstance: {fileID: 1385465991}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1385540416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1385540417}
+  - component: {fileID: 1385540419}
+  - component: {fileID: 1385540418}
+  m_Layer: 5
+  m_Name: lucy_image_sad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1385540417
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385540416}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1078297309}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 407.2, y: 57.9}
+  m_SizeDelta: {x: 385.71686, y: 382.2564}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1385540418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385540416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d7748d8f8d789e64c89f8537edfc1f99, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1385540419
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385540416}
+  m_CullTransparentMesh: 0
 --- !u!4 &1386101468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7184968d06957a34aba54d263ada1abd, type: 3}
@@ -31664,6 +31968,10 @@ PrefabInstance:
       propertyPath: instance_story_part_index
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4880419365875481644, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
+      propertyPath: lucy_avatar
+      value: 
+      objectReference: {fileID: 1078297308}
     - target: {fileID: 5017861453839163635, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
       propertyPath: m_Name
       value: StoryCheckpoint (1)
@@ -38302,6 +38610,10 @@ PrefabInstance:
       propertyPath: instance_story_part_index
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4880419365875481644, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
+      propertyPath: lucy_avatar
+      value: 
+      objectReference: {fileID: 1078297308}
     - target: {fileID: 5017861453839163635, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
       propertyPath: m_Name
       value: StoryCheckpoint (12)
@@ -39574,6 +39886,81 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736936903}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1738752952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738752953}
+  - component: {fileID: 1738752955}
+  - component: {fileID: 1738752954}
+  m_Layer: 5
+  m_Name: lucy_image_think
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1738752953
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738752952}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1078297309}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 407.2, y: 57.9}
+  m_SizeDelta: {x: 385.71686, y: 382.2564}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1738752954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738752952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 421220913b7860846ae60e98f416d9fb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1738752955
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738752952}
+  m_CullTransparentMesh: 0
 --- !u!1 &1739918968
 GameObject:
   m_ObjectHideFlags: 0
@@ -42424,6 +42811,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   journal_background: {fileID: 493574193}
   journal_text: {fileID: 2122242102}
+  value_name: FEEL_NOW
+  drop_down_input: {fileID: 546840821}
+  text_input: {fileID: 0}
 --- !u!4 &1862151248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c4abfe2c1573ac48b94bc11a046f77c, type: 3}
@@ -43455,6 +43845,10 @@ PrefabInstance:
       propertyPath: instance_story_part_index
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4880419365875481644, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
+      propertyPath: lucy_avatar
+      value: 
+      objectReference: {fileID: 1078297308}
     - target: {fileID: 5017861453839163635, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
       propertyPath: m_Name
       value: StoryCheckpoint (9)
@@ -49289,6 +49683,10 @@ PrefabInstance:
       propertyPath: instance_story_part_index
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4880419365875481644, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
+      propertyPath: lucy_avatar
+      value: 
+      objectReference: {fileID: 1078297308}
     - target: {fileID: 5017861453839163635, guid: d46d33aa2f1601d4bbee5a75bd2018e8, type: 3}
       propertyPath: m_Name
       value: StoryCheckpoint
