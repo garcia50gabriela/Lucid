@@ -9,6 +9,7 @@ public class IvyDrawer : MonoBehaviour
     public GameObject mountainParent;
     public GameObject IvyMesh;
     public bool tower = false;
+    public GameObject player;
     private bool mousePressed = false;
     private Vector3 check = new Vector3(0.1F, 0.1F, 0.1F);
     private GameObject lastIvy;
@@ -99,8 +100,7 @@ public class IvyDrawer : MonoBehaviour
                         }
                     }
                 }
-                // click off to delete
-                if (dist_from_last_ivy > 0.2)
+                if (dist_from_last_ivy > 0.1)// && dist_from_last_ivy < 0.2 && hit.transform.tag == "mountain")
                 {
                     expire_ivy();
                 }
@@ -160,5 +160,6 @@ public class IvyDrawer : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
         GameData.last_ivy_pos = lastIvy.transform.position;
+        player.GetComponent<MovePlayer>().stop_climbing();
     }
 }

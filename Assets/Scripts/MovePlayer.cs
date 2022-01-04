@@ -209,4 +209,10 @@ public class MovePlayer : MonoBehaviour
             
         }
     }
+    public void stop_climbing() 
+    {
+        insideIvy = false;
+        insideIvyTrigger = false;
+        overlapIvy = 0;
+    }
 }

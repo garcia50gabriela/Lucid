@@ -9,6 +9,7 @@ public class lucy_image : MonoBehaviour
     public GameObject sad;
     public GameObject angry;
     public GameObject worry;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class lucy_image : MonoBehaviour
         sad.SetActive(false);
         angry.SetActive(false);
         worry.SetActive(false);
+        player.SetActive(false);
     }
 
     public void show_happy() 
@@ -44,5 +46,9 @@ public class lucy_image : MonoBehaviour
     public void show_worry()
     {
         worry.SetActive(true);
+    }
+    public void show_player() 
+    {
+        player.SetActive(true);
     }
 }

@@ -158,9 +158,11 @@ public class Checkpoints : MonoBehaviour
                 lucy_avatar.GetComponent<lucy_image>().clear_image();
                 storyText.alignment = TextAnchor.UpperLeft;
                 storyText.color = Color.black;
+                lucy_avatar.GetComponent<lucy_image>().show_player();
             }
             else if (t.StartsWith("[L]"))
             {
+                lucy_avatar.GetComponent<lucy_image>().clear_image();
                 storyText.alignment = TextAnchor.UpperRight;
                 storyText.color = Color.magenta;
                 show_lucy_image(t);
