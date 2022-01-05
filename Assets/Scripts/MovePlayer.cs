@@ -131,7 +131,7 @@ public class MovePlayer : MonoBehaviour
     bool IsGrounded()
     {
         RaycastHit hit;
-        bool did_hit = Physics.Raycast(transform.position, -Vector3.up, out hit, distToGround + 0.001f);
+        bool did_hit = Physics.Raycast(transform.position, -Vector3.up, out hit, distToGround + 0.005f);
 
         return did_hit;
     }

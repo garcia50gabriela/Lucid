@@ -19,7 +19,7 @@ public class player_camera : MonoBehaviour
     void Update()
     {
         target_z = player_obj.transform.position.z - 0.4f;
-        float step = speed * Time.deltaTime;
+        float step = Time.deltaTime * Mathf.Abs(player_obj.transform.position.y - transform.position.y);
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(player_obj.transform.position.x, player_obj.transform.position.y, target_z), step);
     }
 }

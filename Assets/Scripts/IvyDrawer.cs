@@ -75,7 +75,7 @@ public class IvyDrawer : MonoBehaviour
                 float dist_from_last_ivy = Vector3.Distance(hit.point, lastIvy.transform.position);
                 if (hit.transform.tag == "trellis")
                 {
-                    if (dist_from_last_ivy >= 0.015f)
+                    if (dist_from_last_ivy >= 0.015f && dist_from_last_ivy <= 0.15f)
                     {
                         float dist_from_first_ivy = Vector3.Distance(hit.point, ivy.transform.position);
                         if (dist_from_first_ivy < Mathf.Abs(1f))
@@ -100,7 +100,7 @@ public class IvyDrawer : MonoBehaviour
                         }
                     }
                 }
-                if (dist_from_last_ivy > 0.1)// && dist_from_last_ivy < 0.2 && hit.transform.tag == "mountain")
+                if (dist_from_last_ivy > 0.1 && hit.transform.tag == "mountain")
                 {
                     expire_ivy();
                 }

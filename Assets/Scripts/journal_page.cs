@@ -37,12 +37,10 @@ public class journal_page : MonoBehaviour
         if (drop_down_input != null) 
         {
             GameData.user_inputs[value_name + "_DROPDOWN"] = drop_down_input.text;
-            print(GameData.user_inputs[value_name + "_DROPDOWN"]);
         }
         if (text_input != null)
         {
             GameData.user_inputs[value_name + "_INPUT"] = text_input.text;
-            print(GameData.user_inputs[value_name + "_INPUT"]);
         }
     }
 }
