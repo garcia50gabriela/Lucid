@@ -140,12 +140,11 @@ public class MovePlayer : MonoBehaviour
     {
         if (Col.gameObject.tag == "ivy")
         {
-            overlapIvy++;
-            insideIvyTrigger = true;
-            ivyPos = Col.gameObject.transform.position;
-            if (overlapIvy > 0)
+            if (Col.bounds.center.y > (transform.position.y - 0.03f) && Col.bounds.center.y < (transform.position.y + 0.03f)) 
             {
+                overlapIvy++;
                 insideIvyTrigger = true;
+                ivyPos = Col.gameObject.transform.position;
             }
         }
         if (Col.gameObject.tag == "block")
@@ -180,6 +179,7 @@ public class MovePlayer : MonoBehaviour
                 insideIvy = false;
                 insideIvyTrigger = false;
                 overlapIvy = 0;
+                ivyPos = new Vector3(0f, 0f, 0f);
             }
         }
         if (Col.gameObject.tag == "floatingPlatform")
@@ -199,8 +199,9 @@ public class MovePlayer : MonoBehaviour
             if (insideIvy)
             {
                 insideIvy = !insideIvy;
-                insideIvyTrigger = false;
+                //insideIvyTrigger = false;
                 overlapIvy = 0;
+                //stop_climbing();
             }
             else 
             {
@@ -214,5 +215,6 @@ public class MovePlayer : MonoBehaviour
         insideIvy = false;
         insideIvyTrigger = false;
         overlapIvy = 0;
+        ivyPos = new Vector3(0f, 0f, 0f);
     }
 }

@@ -61,9 +61,14 @@ public class IvyDrawer : MonoBehaviour
         {
             expire_ivy();
         }
+
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.F)) 
+        {
+            expire_ivy();
+        }
     }
 
-    void drawIvy()
+    void drawIvy() 
     {
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -100,10 +105,10 @@ public class IvyDrawer : MonoBehaviour
                         }
                     }
                 }
-                if (dist_from_last_ivy > 0.1 && hit.transform.tag == "mountain")
+                /*if (dist_from_last_ivy > 0.1 && hit.transform.tag == "mountain")
                 {
                     expire_ivy();
-                }
+                }*/
             }
             if (hit.transform.tag == "tower_trellis")
             {
