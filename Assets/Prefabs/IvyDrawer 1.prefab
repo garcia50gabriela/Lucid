@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4865774080417364888
+--- !u!1 &8098557932493582007
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,92 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4865774080417364070}
-  - component: {fileID: 4865774080417364889}
-  m_Layer: 0
-  m_Name: IvyDrawer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4865774080417364070
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4865774080417364888}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9549685, y: -0.5524513, z: -2.2343774}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4865774080673673052}
-  - {fileID: 4865774082363489327}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4865774080417364889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4865774080417364888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050c7c1ba184545459a98f725f6f3175, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ivy: {fileID: 4865774081449591101}
-  wallParent: {fileID: 4865774082363489326}
-  mountainParent: {fileID: 0}
-  IvyMesh: {fileID: 0}
-  tower: 0
-  player: {fileID: 0}
---- !u!1 &4865774080673673055
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4865774080673673052}
-  m_Layer: 0
-  m_Name: IvyHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4865774080673673052
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4865774080673673055}
-  m_LocalRotation: {x: -0, y: -0.1663089, z: -0, w: 0.98607373}
-  m_LocalPosition: {x: 0, y: -0.31, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4865774081449591097}
-  m_Father: {fileID: 4865774080417364070}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -19.147, z: 0}
---- !u!1 &4865774081449591101
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4865774081449591097}
-  - component: {fileID: 4865774081449591096}
-  - component: {fileID: 4865774081449591099}
-  - component: {fileID: 4865774081449591098}
+  - component: {fileID: 8098557932493582003}
+  - component: {fileID: 8098557932493582002}
+  - component: {fileID: 8098557932493582001}
+  - component: {fileID: 8098557932493582000}
   m_Layer: 2
   m_Name: Ivy
   m_TagString: ivy
@@ -101,36 +19,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4865774081449591097
+--- !u!4 &8098557932493582003
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4865774081449591101}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.114}
-  m_LocalScale: {x: 0.024993699, y: 0.024993699, z: 0.10091206}
+  m_GameObject: {fileID: 8098557932493582007}
+  m_LocalRotation: {x: 0.020587696, y: 0.04698651, z: 0.000968616, w: 0.9986829}
+  m_LocalPosition: {x: -0.0029, y: 0.0163, z: -0.0151}
+  m_LocalScale: {x: 0.031321, y: 0.031321, z: 0.031321}
   m_Children:
-  - {fileID: 5505884063324558707}
-  m_Father: {fileID: 4865774080673673052}
+  - {fileID: 9191209488023649017}
+  m_Father: {fileID: 8098557933294698710}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4865774081449591096
+  m_LocalEulerAnglesHint: {x: 2.352, y: 5.392, z: 0.222}
+--- !u!33 &8098557932493582002
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4865774081449591101}
+  m_GameObject: {fileID: 8098557932493582007}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4865774081449591099
+--- !u!23 &8098557932493582001
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4865774081449591101}
+  m_GameObject: {fileID: 8098557932493582007}
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -165,20 +83,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4865774081449591098
+--- !u!65 &8098557932493582000
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4865774081449591101}
+  m_GameObject: {fileID: 8098557932493582007}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.9999998, z: 2.3177266}
-  m_Center: {x: -0.00000072193114, y: 0, z: -0.6588632}
---- !u!1 &4865774082363489326
+  m_Size: {x: 1.0896035, y: 1.0956821, z: 7.2204165}
+  m_Center: {x: 0.043347064, y: -0.2782356, z: -3.1101956}
+--- !u!1 &8098557932871570340
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,7 +104,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4865774082363489327}
+  - component: {fileID: 8098557932871570341}
   m_Layer: 0
   m_Name: IvyParent
   m_TagString: Untagged
@@ -194,38 +112,120 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4865774082363489327
+--- !u!4 &8098557932871570341
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4865774082363489326}
+  m_GameObject: {fileID: 8098557932871570340}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4865774080417364070}
+  m_Father: {fileID: 8098557933475649516}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5468052878135177880
+--- !u!1 &8098557933294698709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8098557933294698710}
+  m_Layer: 0
+  m_Name: IvyHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8098557933294698710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098557933294698709}
+  m_LocalRotation: {x: 0.008599772, y: -0.22917295, z: 0.0014581892, w: 0.9733467}
+  m_LocalPosition: {x: 0.357, y: 0.048, z: -1.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8098557932493582003}
+  m_Father: {fileID: 8098557933475649516}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -26.498, z: 0}
+--- !u!1 &8098557933475648530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8098557933475649516}
+  - component: {fileID: 8098557933475648531}
+  m_Layer: 0
+  m_Name: IvyDrawer 1
+  m_TagString: mountain
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8098557933475649516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098557933475648530}
+  m_LocalRotation: {x: -0, y: 0.83748585, z: -0, w: 0.54645896}
+  m_LocalPosition: {x: 0, y: -6.619, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8098557933294698710}
+  - {fileID: 8098557932871570341}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 113.751, z: 0}
+--- !u!114 &8098557933475648531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098557933475648530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050c7c1ba184545459a98f725f6f3175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ivy: {fileID: 8098557932493582007}
+  wallParent: {fileID: 8098557932871570340}
+  mountainParent: {fileID: 0}
+  IvyMesh: {fileID: 0}
+  tower: 0
+  player: {fileID: 0}
+--- !u!1001 &8648887280681098514
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4865774081449591097}
+    m_TransformParent: {fileID: 8098557932493582003}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bfe5155dad2dbed4fab91774995213db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.064
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfe5155dad2dbed4fab91774995213db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4355169
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfe5155dad2dbed4fab91774995213db, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.062
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfe5155dad2dbed4fab91774995213db, type: 3}
       propertyPath: m_LocalRotation.x
@@ -260,12 +260,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfe5155dad2dbed4fab91774995213db, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.30024144
+      propertyPath: m_LocalScale.z
+      value: 0.3010521
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfe5155dad2dbed4fab91774995213db, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.0746139
+      propertyPath: m_LocalScale.x
+      value: 0.30024144
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfe5155dad2dbed4fab91774995213db, type: 3}
       propertyPath: m_LocalScale.y
@@ -277,8 +277,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfe5155dad2dbed4fab91774995213db, type: 3}
---- !u!4 &5505884063324558707 stripped
+--- !u!4 &9191209488023649017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfe5155dad2dbed4fab91774995213db, type: 3}
-  m_PrefabInstance: {fileID: 5468052878135177880}
+  m_PrefabInstance: {fileID: 8648887280681098514}
   m_PrefabAsset: {fileID: 0}

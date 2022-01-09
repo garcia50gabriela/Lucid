@@ -15,12 +15,16 @@ public class MovePlayer : MonoBehaviour
     // jump
     private float distToGround;
     private bool groundedPlayer;
-    private float jumpHeight = 0.3f;
+    private float jumpHeight = 1f;
     private float gravityValue = -3f;
     // ivy
     private bool insideIvy = false;
     private bool insideIvyTrigger = false;
-    private Vector3 ivyPos;
+    private GameObject currentIvy;
+    private Transform ivyParent;
+    private Transform next_ivy;
+    private bool currently_moving = false;
+    private int ivyIndex;
     private int overlapIvy = 0;
     // block
     private bool insideBlock = false;
@@ -43,71 +47,124 @@ public class MovePlayer : MonoBehaviour
     {
         if (!GameData.story_mode)
         {
-            if (insideIvy)
-            {
-                apply_vine_movement();
-            }
-            else
-            {
+            //if (insideIvy)
+            //{
+                //apply_vine_movement();
+            //}
+            //else
+            //{
                 apply_movement();
-            }
-            if (insideIvyTrigger)
-            {
-                check_for_ivy_activate();
-            }
+                
+            //}
+            //if (insideIvyTrigger)
+            //{
+                //check_for_ivy_activate();
+            //}
         }
         else 
         {
             just_apply_gravity();
         }
-        respawn_if_fallen();
-        transform.position = new Vector3(0f, transform.position.y, player_z_position());
+        //respawn_if_fallen();
+        //transform.position = new Vector3(transform.position.x, transform.position.y, player_z_position());
     }
 
     void just_apply_gravity() 
     {
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
-        transform.position = new Vector3(0f, transform.position.y, player_z_position());
-        transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        transform.position = new Vector3(transform.position.x, transform.position.y, player_z_position());
+        //transform.eulerAngles = new Vector3(0f, 0f, 0f);
     }
 
     void apply_vine_movement() 
     {
-        transform.position = new Vector3(transform.position.x, ivyPos.y, transform.position.z);
-        Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
+        
+        if (!currently_moving)
+        {
+            if (ivyIndex <= (ivyParent.childCount - 1) && ivyIndex > 0)
+            {
+                if (Input.GetAxis("Horizontal") < 0f)
+                {
+                    ivyIndex--;
+                }
+                else if (Input.GetAxis("Horizontal") > 0f)
+                {
+                    ivyIndex++;
+                }
+                // print(Input.GetAxis("Horizontal"));
+
+                next_ivy = ivyParent.GetChild(ivyIndex);
+                currently_moving = true;
+            }
+            //print(ivyIndex);
+        }
+
+        var new_position = Vector3.MoveTowards(transform.position, next_ivy.position, 0.00001f);
+        print(new_position);
+        transform.position = new Vector3(transform.position.x, new_position.y, transform.position.z);
+        //Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
+        //transform.RotateAround();
+        if (new_position.y == transform.position.y && new_position.x == transform.position.x)
+        {
+            currently_moving = false;
+        }
     }
 
     void apply_movement()
     {
         groundedPlayer = IsGrounded();
+        print(groundedPlayer);
+        //controller.Move(playerVelocity * Time.deltaTime);
+        //Vector3 lower_pos = new Vector3(transform.position.x, transform.position.y-0.05f, transform.position.z);
+        //Vector3 higher_pos = new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z);
+        //if (!Physics.Raycast(lower_pos, transform.TransformDirection(Vector3.right), 0.025f) && !Physics.Raycast(higher_pos, transform.TransformDirection(Vector3.right), 0.025f))
+        //{
+        //Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
+        //transform.RotateAround(Mountains.transform.position, Vector3.up, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime);
+        //}
+        //else if (Input.GetAxis("Horizontal") < 0)
+        //{
+        //Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            //print(Mountains.transform.position);
+            var prev_transform = transform.position;
+            transform.RotateAround(Mountains.transform.position, Vector3.up, -Input.GetAxis("Horizontal") * (playerSpeed));
+            var next_transform = transform.position;
+            transform.position = prev_transform;
+            //var rot = RotateAbout(transform.position, Mountains.transform.position, Vector3.up, -Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime);
+            playerVelocity = next_transform - prev_transform;
+            playerVelocity.y = 0f;
+        }
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
-        Vector3 lower_pos = new Vector3(transform.position.x, transform.position.y-0.05f, transform.position.z);
-        Vector3 higher_pos = new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z);
-        if (!Physics.Raycast(lower_pos, transform.TransformDirection(Vector3.right), 0.025f) && !Physics.Raycast(higher_pos, transform.TransformDirection(Vector3.right), 0.025f))
-        {
-            Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
-        }
-        else if (Input.GetAxis("Horizontal") < 0)
-        {
-            Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
-        }
-        Vector3 move = new Vector3(0f, 0f, 0f);
-        controller.Move(move * Time.deltaTime * playerSpeed/6);
-
         if (groundedPlayer && Input.GetKeyDown(KeyCode.Space))
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -1 * gravityValue);
         }
-         
+        //}
+        //Vector3 move = new Vector3(0f, 0f, 0f);
+        //controller.Move(move * Time.deltaTime * playerSpeed/6);
+
+        /*if (groundedPlayer && Input.GetKeyDown(KeyCode.Space))
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -1 * gravityValue);
+        }*/
+
+        // transform.position = new Vector3(transform.position.x, transform.position.y + playerVelocity.y, transform.position.z);
+
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
-        transform.position = new Vector3(0f, transform.position.y, player_z_position());
-        transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        //transform.position = new Vector3(transform.position.x, transform.position.y, player_z_position());
+        //transform.eulerAngles = new Vector3(0f, 0f, 0f);
     }
+
+    /*Vector3 RotateAbout(Vector3 position, Vector3 rotatePoint, Vector3 axis, float angle) {
+           return (Quaternion.AngleAxis(angle, axis));
+    }*/
 
     float player_z_position() 
     {
@@ -140,12 +197,12 @@ public class MovePlayer : MonoBehaviour
     {
         if (Col.gameObject.tag == "ivy")
         {
-            if (Col.bounds.center.y > (transform.position.y - 0.03f) && Col.bounds.center.y < (transform.position.y + 0.03f)) 
-            {
+            /*if (Col.bounds.center.y > (transform.position.y - 0.03f) && Col.bounds.center.y < (transform.position.y + 0.03f))
+            {*/
                 overlapIvy++;
                 insideIvyTrigger = true;
-                ivyPos = Col.gameObject.transform.position;
-            }
+                currentIvy = Col.gameObject;
+            /*}*/
         }
         if (Col.gameObject.tag == "block")
         {
@@ -179,7 +236,6 @@ public class MovePlayer : MonoBehaviour
                 insideIvy = false;
                 insideIvyTrigger = false;
                 overlapIvy = 0;
-                ivyPos = new Vector3(0f, 0f, 0f);
             }
         }
         if (Col.gameObject.tag == "floatingPlatform")
@@ -198,14 +254,15 @@ public class MovePlayer : MonoBehaviour
         {
             if (insideIvy)
             {
-                insideIvy = !insideIvy;
-                //insideIvyTrigger = false;
+                insideIvy = false;
                 overlapIvy = 0;
-                //stop_climbing();
+                ivyIndex = 0;
             }
             else 
             {
-                insideIvy = !insideIvy;
+                insideIvy = true;
+                ivyParent = currentIvy.transform.parent;
+                ivyIndex = currentIvy.transform.GetSiblingIndex();
             }
             
         }
@@ -215,6 +272,5 @@ public class MovePlayer : MonoBehaviour
         insideIvy = false;
         insideIvyTrigger = false;
         overlapIvy = 0;
-        ivyPos = new Vector3(0f, 0f, 0f);
     }
 }
