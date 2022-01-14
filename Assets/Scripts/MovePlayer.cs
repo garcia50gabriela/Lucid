@@ -20,7 +20,11 @@ public class MovePlayer : MonoBehaviour
     // ivy
     private bool insideIvy = false;
     private bool insideIvyTrigger = false;
-    private Vector3 ivyPos;
+    private GameObject currentIvy;
+    private Transform ivyParent;
+    private Transform next_ivy;
+    private bool currently_moving = false;
+    private int ivyIndex;
     private int overlapIvy = 0;
     // block
     private bool insideBlock = false;
@@ -45,10 +49,12 @@ public class MovePlayer : MonoBehaviour
         {
             if (insideIvy)
             {
+                print("apply vine movement");
                 apply_vine_movement();
             }
             else
             {
+                print("apply movement");
                 apply_movement();
             }
             if (insideIvyTrigger)
@@ -74,8 +80,44 @@ public class MovePlayer : MonoBehaviour
 
     void apply_vine_movement() 
     {
-        transform.position = new Vector3(transform.position.x, ivyPos.y, transform.position.z);
-        Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
+        if (ivyIndex > 0 && ivyIndex < ivyParent.childCount - 1) 
+        {
+            if (Input.GetAxis("Horizontal") != 0f)
+            {
+                if (!currently_moving)
+                {
+                    if (Input.GetAxis("Horizontal") < 0f)
+                    {
+                        ivyIndex--;
+                    }
+                    else if (Input.GetAxis("Horizontal") > 0f)
+                    {
+                        ivyIndex++;
+                    }
+                    next_ivy = ivyParent.GetChild(ivyIndex);
+                    currently_moving = true;
+                    print(ivyIndex);
+                }
+
+                var next_pos = Vector3.MoveTowards(transform.position, next_ivy.position, 0.01f);
+                float angle = Vector3.Angle(new Vector3(transform.position.x, 0f, transform.position.z), new Vector3(next_pos.x, 0f, next_pos.z));
+                transform.position = new Vector3(transform.position.x, next_pos.y, transform.position.z);
+
+                //float angle = Vector3.Angle(new Vector3(transform.position.x, 0f, transform.position.z), new Vector3(next_ivy.position.x, 0f, next_ivy.position.z));
+                //transform.position = new Vector3(transform.position.x, next_ivy.position.y, transform.position.z);
+
+                Mountains.transform.Rotate(0f, angle, 0f);
+                /*print("player y");
+                print(transform.position.y);
+                print("next ivy y");
+                print(next_ivy.position.y);*/
+                if (transform.position.y == next_ivy.position.y) 
+                {
+                    currently_moving = false;
+                    //print("reset");
+                }
+            }
+        }
     }
 
     void apply_movement()
@@ -107,7 +149,7 @@ public class MovePlayer : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
         transform.position = new Vector3(0f, transform.position.y, player_z_position());
         transform.eulerAngles = new Vector3(0f, 0f, 0f);
-    }
+}
 
     float player_z_position() 
     {
@@ -140,12 +182,12 @@ public class MovePlayer : MonoBehaviour
     {
         if (Col.gameObject.tag == "ivy")
         {
-            if (Col.bounds.center.y > (transform.position.y - 0.03f) && Col.bounds.center.y < (transform.position.y + 0.03f)) 
-            {
-                overlapIvy++;
-                insideIvyTrigger = true;
-                ivyPos = Col.gameObject.transform.position;
-            }
+            /*if (Col.bounds.center.y > (transform.position.y - 0.03f) && Col.bounds.center.y < (transform.position.y + 0.03f)) 
+            {*/
+            overlapIvy++;
+            insideIvyTrigger = true;
+            currentIvy = Col.gameObject;
+            /*}*/
         }
         if (Col.gameObject.tag == "block")
         {
@@ -176,10 +218,8 @@ public class MovePlayer : MonoBehaviour
             overlapIvy--;
             if (overlapIvy <= 0)
             {
-                insideIvy = false;
                 insideIvyTrigger = false;
                 overlapIvy = 0;
-                ivyPos = new Vector3(0f, 0f, 0f);
             }
         }
         if (Col.gameObject.tag == "floatingPlatform")
@@ -198,14 +238,16 @@ public class MovePlayer : MonoBehaviour
         {
             if (insideIvy)
             {
-                insideIvy = !insideIvy;
-                //insideIvyTrigger = false;
+                insideIvy = false;
                 overlapIvy = 0;
-                //stop_climbing();
+                ivyIndex = 0;
+                currently_moving = false;
             }
             else 
             {
-                insideIvy = !insideIvy;
+                insideIvy = true;
+                ivyParent = currentIvy.transform.parent;
+                ivyIndex = currentIvy.transform.GetSiblingIndex();
             }
             
         }
@@ -215,6 +257,5 @@ public class MovePlayer : MonoBehaviour
         insideIvy = false;
         insideIvyTrigger = false;
         overlapIvy = 0;
-        ivyPos = new Vector3(0f, 0f, 0f);
     }
 }

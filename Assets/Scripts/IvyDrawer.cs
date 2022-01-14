@@ -62,53 +62,36 @@ public class IvyDrawer : MonoBehaviour
             expire_ivy();
         }
 
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.F)) 
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.F))
         {
             expire_ivy();
         }
     }
 
-    void drawIvy() 
+    void drawIvy()
     {
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (!tower) 
+            if (!tower)
             {
                 float dist_from_last_ivy = Vector3.Distance(hit.point, lastIvy.transform.position);
                 if (hit.transform.tag == "trellis")
                 {
-                    if (dist_from_last_ivy >= 0.015f && dist_from_last_ivy <= 0.15f)
+                    if (dist_from_last_ivy >= 0.03f && dist_from_last_ivy <= 0.5f)
                     {
                         float dist_from_first_ivy = Vector3.Distance(hit.point, ivy.transform.position);
                         if (dist_from_first_ivy < Mathf.Abs(1f))
                         {
-                            lastIvy = Instantiate(ivy, hit.point, ivy.transform.rotation, wallParent.transform);
+                            var cal_rot = Mathf.Atan2(hit.point.y - lastIvy.transform.position.y, hit.point.x - lastIvy.transform.position.x);
+                            lastIvy = Instantiate(ivy, hit.point, Quaternion.Euler(10f, 0f, Mathf.Rad2Deg * cal_rot - 90), wallParent.transform);
                             firstClick = true;
                             ivyColliderCounter++;
-                            if (ivyColliderCounter == 1)
-                            {
-                                first_mesh_point = lastIvy.transform.position;
-                            }
-                            if (ivyColliderCounter == 2)
-                            {
-                                last_mesh_point = lastIvy.transform.position;
-                            }
-                            if (ivyColliderCounter >= 2)
-                            {
-                                ivyColliderCounter = 0;
-                                var cal_rot = Mathf.Atan2(last_mesh_point.y - first_mesh_point.y, last_mesh_point.x - first_mesh_point.x);
-                                Instantiate(IvyMesh, hit.point, Quaternion.Euler(10f, 0f, Mathf.Rad2Deg * cal_rot - 90), wallParent.transform);
-                            }
                         }
                     }
                 }
-                /*if (dist_from_last_ivy > 0.1 && hit.transform.tag == "mountain")
-                {
-                    expire_ivy();
-                }*/
             }
             if (hit.transform.tag == "tower_trellis")
             {
@@ -137,12 +120,8 @@ public class IvyDrawer : MonoBehaviour
                         Instantiate(IvyMesh, hit.point, Quaternion.Euler(10f, 0f, Mathf.Rad2Deg * cal_rot - 90), wallParent.transform);
                     }
                 }
-                /*else
-                {
-                    GameData.drawing_ivy = false;
-                }*/
             }
-            else 
+            else
             {
                 GameData.drawing_ivy = false;
             }
