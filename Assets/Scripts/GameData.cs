@@ -26,4 +26,9 @@ public static class GameData
     public static int journal_phase = 0;
     public static bool drawing_ivy = false;
     public static Vector3 last_ivy_pos;
+    // ivy
+    public static bool insideIvy = false;
+    public static bool insideIvyTrigger = false;
+    public static Vector3 ivyPos;
+    public static int overlapIvy = 0;
 }

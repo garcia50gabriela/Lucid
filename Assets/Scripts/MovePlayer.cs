@@ -17,14 +17,6 @@ public class MovePlayer : MonoBehaviour
     private bool groundedPlayer;
     private float jumpHeight = 0.3f;
     private float gravityValue = -3f;
-    // ivy
-    private bool insideIvy = false;
-    private bool insideIvyTrigger = false;
-    private Vector3 ivyPos;
-    private int overlapIvy = 0;
-    // block
-    private bool insideBlock = false;
-    private GameObject currentBlock;
     // z calculation
     private Vector3 mountain_bounds;
     
@@ -43,7 +35,7 @@ public class MovePlayer : MonoBehaviour
     {
         if (!GameData.story_mode)
         {
-            if (insideIvy)
+            if (GameData.insideIvy)
             {
                 apply_vine_movement();
             }
@@ -51,7 +43,7 @@ public class MovePlayer : MonoBehaviour
             {
                 apply_movement();
             }
-            if (insideIvyTrigger)
+            if (GameData.insideIvyTrigger)
             {
                 check_for_ivy_activate();
             }
@@ -74,7 +66,9 @@ public class MovePlayer : MonoBehaviour
 
     void apply_vine_movement() 
     {
-        transform.position = new Vector3(transform.position.x, ivyPos.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, GameData.ivyPos.y, transform.position.z);
+        // Could cause problems due to not rotating the motain along with y movement
+        //float angle = Vector3.Angle(new Vector3(transform.position.x, 0f, transform.position.z), new Vector3(GameData.ivyPos.x, 0f, GameData.ivyPos.z));
         Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
     }
 
@@ -138,20 +132,6 @@ public class MovePlayer : MonoBehaviour
 
     void OnTriggerEnter(Collider Col)
     {
-        if (Col.gameObject.tag == "ivy")
-        {
-            if (Col.bounds.center.y > (transform.position.y - 0.03f) && Col.bounds.center.y < (transform.position.y + 0.03f)) 
-            {
-                overlapIvy++;
-                insideIvyTrigger = true;
-                ivyPos = Col.gameObject.transform.position;
-            }
-        }
-        if (Col.gameObject.tag == "block")
-        {
-            insideBlock = true;
-            currentBlock = Col.gameObject;
-        }
         if (Col.gameObject.tag == "water")
         {
             //respawn
@@ -171,24 +151,9 @@ public class MovePlayer : MonoBehaviour
 
     void OnTriggerExit(Collider Col) 
     {
-        if (Col.gameObject.tag == "ivy")
-        {
-            overlapIvy--;
-            if (overlapIvy <= 0)
-            {
-                insideIvy = false;
-                insideIvyTrigger = false;
-                overlapIvy = 0;
-                ivyPos = new Vector3(0f, 0f, 0f);
-            }
-        }
         if (Col.gameObject.tag == "floatingPlatform")
         {
             transform.parent = null;
-        }
-        if (Col.gameObject.tag == "block")
-        {
-            insideBlock = false;
         }
     }
 
@@ -196,25 +161,19 @@ public class MovePlayer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (insideIvy)
+            if (GameData.insideIvy)
             {
-                insideIvy = !insideIvy;
-                //insideIvyTrigger = false;
-                overlapIvy = 0;
-                //stop_climbing();
+                GameData.insideIvy = false;
             }
             else 
             {
-                insideIvy = !insideIvy;
+                GameData.insideIvy = true;
             }
             
         }
     }
     public void stop_climbing() 
     {
-        insideIvy = false;
-        insideIvyTrigger = false;
-        overlapIvy = 0;
-        ivyPos = new Vector3(0f, 0f, 0f);
+        GameData.insideIvy = false;
     }
 }

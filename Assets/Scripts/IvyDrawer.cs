@@ -66,6 +66,11 @@ public class IvyDrawer : MonoBehaviour
         {
             expire_ivy();
         }
+        if (timePassed > 8f) 
+        {
+            fade_ivy_color();
+        }
+        
     }
 
     void drawIvy() 
@@ -166,5 +171,17 @@ public class IvyDrawer : MonoBehaviour
         }
         GameData.last_ivy_pos = lastIvy.transform.position;
         player.GetComponent<MovePlayer>().stop_climbing();
+    }
+
+    void fade_ivy_color() 
+    {
+        foreach (Transform ivy_child in wallParent.transform)
+        {
+            foreach (Transform child in ivy_child.transform)
+            {
+                var color = child.GetComponent<Renderer>().material.color;
+                child.GetComponent<Renderer>().material.color = new Color(color.r - (timePassed / 25000f), color.g - (timePassed/25000f), color.b - (timePassed / 2500f), color.a);
+            }
+        }
     }
 }
