@@ -121,6 +121,10 @@ public class Checkpoints : MonoBehaviour
                 journalCheckpoint();
                 gameObject.SetActive(false);
             }
+            if (gameObject.tag == "checkpoint") 
+            {
+                gameObject.SetActive(false);
+            }
 
         }
     }

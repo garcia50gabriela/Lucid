@@ -5,7 +5,8 @@ using UnityEngine;
 public class IvyDrawer : MonoBehaviour
 {
     public GameObject ivy;
-    public GameObject wallParent;
+    public GameObject ivyColliderParent;
+    public GameObject ivyMeshParent;
     public GameObject mountainParent;
     public GameObject IvyMesh;
     public bool tower = false;
@@ -90,7 +91,7 @@ public class IvyDrawer : MonoBehaviour
                         float dist_from_first_ivy = Vector3.Distance(hit.point, ivy.transform.position);
                         if (dist_from_first_ivy < Mathf.Abs(1f))
                         {
-                            lastIvy = Instantiate(ivy, hit.point, ivy.transform.rotation, wallParent.transform);
+                            lastIvy = Instantiate(ivy, hit.point, ivy.transform.rotation, ivyColliderParent.transform);
                             firstClick = true;
                             ivyColliderCounter++;
                             if (ivyColliderCounter == 1)
@@ -105,7 +106,7 @@ public class IvyDrawer : MonoBehaviour
                             {
                                 ivyColliderCounter = 0;
                                 var cal_rot = Mathf.Atan2(last_mesh_point.y - first_mesh_point.y, last_mesh_point.x - first_mesh_point.x);
-                                Instantiate(IvyMesh, hit.point, Quaternion.Euler(10f, 0f, Mathf.Rad2Deg * cal_rot - 90), wallParent.transform);
+                                Instantiate(IvyMesh, hit.point, Quaternion.Euler(10f, 0f, Mathf.Rad2Deg * cal_rot - 90), ivyMeshParent.transform);
                             }
                         }
                     }
@@ -121,7 +122,7 @@ public class IvyDrawer : MonoBehaviour
                 if (dist_from_last_ivy > Mathf.Abs(0.1f))
                 {
                     GameData.drawing_ivy = true;
-                    lastIvy = Instantiate(ivy, hit.point, ivy.transform.rotation, wallParent.transform);
+                    lastIvy = Instantiate(ivy, hit.point, ivy.transform.rotation, ivyColliderParent.transform);
                     var rot = mountainParent.transform.rotation;
                     rot.y = -rot.y;
                     lastIvy.transform.localRotation = rot;
@@ -139,7 +140,7 @@ public class IvyDrawer : MonoBehaviour
                     {
                         ivyColliderCounter = 0;
                         var cal_rot = Mathf.Atan2(last_mesh_point.y - first_mesh_point.y, last_mesh_point.x - first_mesh_point.x);
-                        Instantiate(IvyMesh, hit.point, Quaternion.Euler(10f, 0f, Mathf.Rad2Deg * cal_rot - 90), wallParent.transform);
+                        Instantiate(IvyMesh, hit.point, Quaternion.Euler(10f, 0f, Mathf.Rad2Deg * cal_rot - 90), ivyMeshParent.transform);
                     }
                 }
                 /*else
@@ -165,7 +166,11 @@ public class IvyDrawer : MonoBehaviour
         firstClick = false;
         lastIvy = ivy;
         ivyColliderCounter = 0;
-        foreach (Transform child in wallParent.transform)
+        foreach (Transform child in ivyColliderParent.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        foreach (Transform child in ivyMeshParent.transform)
         {
             GameObject.Destroy(child.gameObject);
         }
@@ -175,7 +180,7 @@ public class IvyDrawer : MonoBehaviour
 
     void fade_ivy_color() 
     {
-        foreach (Transform ivy_child in wallParent.transform)
+        foreach (Transform ivy_child in ivyMeshParent.transform)
         {
             foreach (Transform child in ivy_child.transform)
             {

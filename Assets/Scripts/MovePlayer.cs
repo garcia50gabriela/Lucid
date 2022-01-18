@@ -19,6 +19,11 @@ public class MovePlayer : MonoBehaviour
     private float gravityValue = -3f;
     // z calculation
     private Vector3 mountain_bounds;
+
+    //ivy index
+    private int ivyIndex = 0;
+    private bool currentlyMoving = false;
+    private bool movingForward = false;
     
 
     void Start()
@@ -43,9 +48,13 @@ public class MovePlayer : MonoBehaviour
             {
                 apply_movement();
             }
-            if (GameData.insideIvyTrigger)
+            if (GameData.insideIvyTrigger && !GameData.insideIvy)
             {
                 check_for_ivy_activate();
+            }
+            else if (GameData.insideIvy) 
+            {
+                check_for_ivy_deactivate();
             }
         }
         else 
@@ -66,10 +75,54 @@ public class MovePlayer : MonoBehaviour
 
     void apply_vine_movement() 
     {
-        transform.position = new Vector3(transform.position.x, GameData.ivyPos.y, transform.position.z);
-        // Could cause problems due to not rotating the motain along with y movement
-        //float angle = Vector3.Angle(new Vector3(transform.position.x, 0f, transform.position.z), new Vector3(GameData.ivyPos.x, 0f, GameData.ivyPos.z));
-        Mountains.transform.Rotate(0f, Input.GetAxis("Horizontal") * (playerSpeed) * Time.deltaTime, 0f);
+        if (Input.GetAxis("Horizontal") != 0) 
+        {
+            if (ivyIndex <= (GameData.ivyParent.childCount -1) && ivyIndex >= 0)
+            {
+                if (Input.GetAxis("Horizontal") > 0 && !currentlyMoving)
+                {
+                    if (ivyIndex < (GameData.ivyParent.childCount - 1))
+                    {
+                        ivyIndex += 1;
+                        currentlyMoving = true;
+                        movingForward = true;
+                    }
+                    else 
+                    {
+                        stop_climbing();
+                    }
+                    
+                }
+                else if (Input.GetAxis("Horizontal") < 0  && !currentlyMoving)
+                {
+                    if (ivyIndex > 0)
+                    {
+                        ivyIndex -= 1;
+                        currentlyMoving = true;
+                        movingForward = false;
+                    }
+                    else 
+                    {
+                        stop_climbing();
+                    }
+                    
+                }
+                if (currentlyMoving) 
+                {
+                    var nextIvy = GameData.ivyParent.GetChild(ivyIndex);
+                    var next_pos = Vector3.MoveTowards(transform.position, nextIvy.transform.position, Time.deltaTime * 10f);
+                    transform.position = new Vector3(transform.position.x, next_pos.y, transform.position.z);
+                    float angle = Vector3.SignedAngle(new Vector3(transform.position.x, 0f, transform.position.z), new Vector3(next_pos.x, 0f, next_pos.z), Vector3.up);
+                    Mountains.transform.eulerAngles = new Vector3(0, Mountains.transform.eulerAngles.y - angle, 0);
+                    if ((nextIvy.position.x <= 0f && Input.GetAxis("Horizontal") > 0) || (nextIvy.position.x >= 0f && Input.GetAxis("Horizontal") < 0))
+                    {
+                        currentlyMoving = false;
+                    }
+                }
+
+            }
+
+        }
     }
 
     void apply_movement()
@@ -167,11 +220,24 @@ public class MovePlayer : MonoBehaviour
             }
             else 
             {
+                ivyIndex = 0;
                 GameData.insideIvy = true;
             }
             
         }
     }
+
+    void check_for_ivy_deactivate()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (GameData.insideIvy)
+            {
+                GameData.insideIvy = false;
+            }
+        }
+    }
+
     public void stop_climbing() 
     {
         GameData.insideIvy = false;

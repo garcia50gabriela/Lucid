@@ -31,4 +31,5 @@ public static class GameData
     public static bool insideIvyTrigger = false;
     public static Vector3 ivyPos;
     public static int overlapIvy = 0;
+    public static Transform ivyParent;
 }

@@ -23,6 +23,7 @@ public class ClimbingCollider : MonoBehaviour
             GameData.overlapIvy++;
             GameData.insideIvyTrigger = true;
             GameData.ivyPos = Col.gameObject.transform.position;
+            GameData.ivyParent = Col.gameObject.transform.parent; 
         }
     }
 
@@ -33,7 +34,7 @@ public class ClimbingCollider : MonoBehaviour
             GameData.overlapIvy--;
             if (GameData.overlapIvy <= 0)
             {
-                GameData.insideIvy = false;
+                //GameData.insideIvy = false;
                 GameData.insideIvyTrigger = false;
                 GameData.overlapIvy = 0;
             }
