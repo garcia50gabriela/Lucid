@@ -41,7 +41,7 @@ public class Intro_Text : MonoBehaviour
         "FEELING_DROPDOWN",
         "The atmosphere felt...",
         "ATMOSPHERE_DROPDOWN",
-        "Some other things I would like to make note of are:",
+        "Some other things I would like to make note of are...",
         "OPEN_INPUT",
         "",
         "Sometimes I think dreams mean something, and sometimes I'm not so sure. Either way it's still fun to think about and appreciate the bizzare world that can only exist in *your* mind."

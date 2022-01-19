@@ -110,13 +110,21 @@ public class MovePlayer : MonoBehaviour
                 if (currentlyMoving) 
                 {
                     var nextIvy = GameData.ivyParent.GetChild(ivyIndex);
+                    Debug.Log("ivyindex:");
+                    Debug.Log(ivyIndex);
                     var next_pos = Vector3.MoveTowards(transform.position, nextIvy.transform.position, Time.deltaTime * 10f);
+                    Debug.Log("next position");
+                    Debug.Log(next_pos.x);
                     transform.position = new Vector3(transform.position.x, next_pos.y, transform.position.z);
                     float angle = Vector3.SignedAngle(new Vector3(transform.position.x, 0f, transform.position.z), new Vector3(next_pos.x, 0f, next_pos.z), Vector3.up);
-                    Mountains.transform.eulerAngles = new Vector3(0, Mountains.transform.eulerAngles.y - angle, 0);
-                    if ((nextIvy.position.x <= 0f && Input.GetAxis("Horizontal") > 0) || (nextIvy.position.x >= 0f && Input.GetAxis("Horizontal") < 0))
+                    Debug.Log("angle");
+                    Debug.Log(angle);
+                    //Mountains.transform.eulerAngles = new Vector3(0, Mountains.transform.eulerAngles.y - angle, 0);
+                    Mountains.transform.rotation *= Quaternion.AngleAxis(-angle, Vector3.up);
+                    if ((angle >= 0.0 && Input.GetAxis("Horizontal") > 0) || (angle <= 0.0 && Input.GetAxis("Horizontal") < 0))
                     {
                         currentlyMoving = false;
+                        Debug.Log("reset");
                     }
                 }
 
