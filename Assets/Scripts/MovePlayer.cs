@@ -79,7 +79,7 @@ public class MovePlayer : MonoBehaviour
         {
             if (ivyIndex <= (GameData.ivyParent.childCount -1) && ivyIndex >= 0)
             {
-                if (Input.GetAxis("Horizontal") > 0 && !currentlyMoving)
+                if (Input.GetAxis("Horizontal") > 0 && !currentlyMoving && !Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), 0.05f))
                 {
                     if (ivyIndex < (GameData.ivyParent.childCount - 1))
                     {
@@ -93,7 +93,7 @@ public class MovePlayer : MonoBehaviour
                     }
                     
                 }
-                else if (Input.GetAxis("Horizontal") < 0  && !currentlyMoving)
+                else if (Input.GetAxis("Horizontal") < 0  && !currentlyMoving && !Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), 0.05f))
                 {
                     if (ivyIndex > 0)
                     {
@@ -112,7 +112,7 @@ public class MovePlayer : MonoBehaviour
                     var nextIvy = GameData.ivyParent.GetChild(ivyIndex);
                     Debug.Log("ivyindex:");
                     Debug.Log(ivyIndex);
-                    var next_pos = Vector3.MoveTowards(transform.position, nextIvy.transform.position, Time.deltaTime * 10f);
+                    var next_pos = Vector3.MoveTowards(transform.position, nextIvy.transform.position, Time.deltaTime * 7f);
                     Debug.Log("next position");
                     Debug.Log(next_pos.x);
                     transform.position = new Vector3(transform.position.x, next_pos.y, transform.position.z);
@@ -176,6 +176,7 @@ public class MovePlayer : MonoBehaviour
 
     void respawn_if_fallen()
     {
+        
         if (transform.position.y < 0)
         {
             transform.position = GameData.start_position;
