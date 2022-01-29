@@ -153,10 +153,10 @@ public class MovePlayer : MonoBehaviour
         Vector3 move = new Vector3(0f, 0f, 0f);
         controller.Move(move * Time.deltaTime * playerSpeed/6);
 
-        if (groundedPlayer && Input.GetKeyDown(KeyCode.Space))
+        /*if (groundedPlayer && Input.GetKeyDown(KeyCode.Space))
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -1 * gravityValue);
-        }
+        }*/
          
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
@@ -171,7 +171,7 @@ public class MovePlayer : MonoBehaviour
         var p_y = transform.position.y;
         
         var player_z = ((m_y - p_y) * m_z) / m_y;
-        return -(player_z + 0.15f);
+        return -(player_z + 0.30f);
     }
 
     void respawn_if_fallen()
@@ -206,6 +206,7 @@ public class MovePlayer : MonoBehaviour
         }
         if (Col.gameObject.tag == "nightmare") 
         {
+            stop_climbing();
             transform.position = GameData.start_position;
             Mountains.transform.rotation = GameData.start_rotation;
         }
