@@ -3,63 +3,108 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+
+public enum InputType {
+    DROP_DOWN,
+    OPEN_TEXT,
+    NONE
+}
+
+public class JournalPrompt
+{
+    public String key;
+    public String prompt;
+    public InputType inputType;
+    public string[] inputOptions;
+    public JournalPrompt(String k, String p, InputType t, string[] ops)
+    {
+        key = k;
+        prompt = p;
+        inputType = t;
+        inputOptions = ops;
+    }
+}
 
 public class Intro_Text : MonoBehaviour
 {
+    public string journalKey = "INTRO";
+    public GameObject journal_background;
+
     public Text text_1;
     public Text text_2;
-    private string text_1_current = "";
-    private string text_2_current = "";
+    private JournalPrompt currentPrompt;
+
     public GameObject text_input;
     public InputField text_input2;
-    private string current_input;
+
     public Dropdown dropdown_input;
     public GameObject dropdown_parent;
     List<Dropdown.OptionData> m_Messages = new List<Dropdown.OptionData>();
     Dropdown.OptionData m_NewData;
+
     public Text text_input_value;
     public Text dropdown_input_value;
+
     public Text date_text;
     public Text header_text;
 
     private int text_index = 0;
     private bool waiting_for_input = false;
-    private string[] text_list = new string[] {
-        "",
-        "Let's write about a recent dream...",
-        "This journal belongs to...",
-        "NAME_INPUT",
-        "This dream took place in...",
-        "TIME_DAY_DROPDOWN",
-        "It all happened...",
-        "LOCATION_DROPDOWN",
-        "I was...",
-        "PERSON_DROPDOWN",
-        "The event taking place was...",
-        "HAPPENING_INPUT",
-        "I felt...",
-        "FEELING_DROPDOWN",
-        "The atmosphere felt...",
-        "ATMOSPHERE_DROPDOWN",
-        "Some other things I would like to make note of are...",
-        "OPEN_INPUT",
-        "",
-        "Sometimes I think dreams mean something, and sometimes I'm not so sure. Either way it's still fun to think about and appreciate the bizzare world that can only exist in *your* mind."
+    private JournalPrompt[] text_list;
+    private JournalPrompt[] introJournalList = new JournalPrompt[] {
+        new JournalPrompt("BLANK", "", InputType.NONE, null),
+        new JournalPrompt("INTRO1", "Journaling is a great form of self-care. It can help us process and understand our most complex emotions through writing.", InputType.NONE, null),
+        new JournalPrompt("INTRO2", "Dreams often seem bizzare, but could reveal feelings we've been ignoring. Let's try writing about a recent dream...", InputType.NONE, null),
+        new JournalPrompt("NAME_INPUT", "This journal belongs to...", InputType.OPEN_TEXT, null),
+        new JournalPrompt("TIME_DAY_DROPDOWN", "This dream took place in...", InputType.DROP_DOWN, new string[]{"the Morning", "the Afternoon", "the Evening", "the Night", "an insignificant time of day." }),
+        new JournalPrompt("LOCATION_DROPDOWN", "It all happened...", InputType.DROP_DOWN, new string[]{"at Home", "at School", "at Work", "Outdoors", "in multiple locations" }),
+        new JournalPrompt("PERSON_DROPDOWN", "I was...", InputType.DROP_DOWN, new string[]{ "with a Friend", "with a Family Member", "with a Collegue", "with a Significant Other", "with a Stranger", "alone" }),
+        new JournalPrompt("HAPPENING_INPUT", "The event taking place was...", InputType.OPEN_TEXT, null),
+        new JournalPrompt("FEELING_DROPDOWN", "I felt...", InputType.DROP_DOWN, new string[]{"Happy", "Sad", "Worried", "Curious", "Excited", "Cautious" }),
+        new JournalPrompt("ATMOSPHERE_DROPDOWN", "The atmosphere felt...", InputType.DROP_DOWN, new string[]{"Erie", "Sterile", "Social", "Cozy", "Familiar", "Intimate" }),
+        new JournalPrompt("OPEN_INPUT", "Some other things I would like to make note of are...", InputType.OPEN_TEXT, null),
+        new JournalPrompt("OUTRO", "Ignoring dreams and avoiding emotions is never as benificial as learning to control them. We should embrace them, understand them, and learn from them.", InputType.NONE, null),
     };
-    private Dictionary<string, string[]> dropdown_options = new Dictionary<string, string[]>()
-    {
-        {"TIME_DAY_DROPDOWN", new string[] {"the Morning", "the Afternoon", "the Evening", "the Night", "an insignificant time of day." } },
-        {"LOCATION_DROPDOWN", new string[] {"at Home", "at School", "at Work", "Outdoors", "in multiple locations" } },
-        {"PERSON_DROPDOWN", new string[] { "with a Friend", "with a Family Member", "with a Collegue", "with a Significant Other", "with a Stranger", "alone" } },
-        {"FEELING_DROPDOWN", new string[] {"Happy", "Sad", "Worried", "Curious", "Excited", "Cautious" } },
-        {"ATMOSPHERE_DROPDOWN", new string[] {"Erie", "Sterile", "Social", "Cozy", "Familiar", "Intimate" } },
+    private JournalPrompt[] Journal1List = new JournalPrompt[] {
+        new JournalPrompt("INTRO", "Places in dreams can represent the feelings we have towards those places. If it's a place you've been before, then consider your personal memories, or if you've never been consider what you know about the place.", InputType.NONE, null),
+        new JournalPrompt("PLACE_REFLECTION_INPUT", "How is being <place> in <time> significant to me...", InputType.OPEN_TEXT, null),  
+    };
+    private JournalPrompt[] Journal2List = new JournalPrompt[] {
+        new JournalPrompt("INTRO", "People and events in dreams do not necessarily mean you're dreaming of them specifically, but rather they represent aspects of ourselves. A performance could represent how you present yourself to others, or a humble friend could represent our humble side.", InputType.NONE, null),
+        new JournalPrompt("PERSON_REFLECTION_INPUT", "What about being <person> or a <event> could symbolize about myself..", InputType.OPEN_TEXT, null),
+    };
+    private JournalPrompt[] Journal3List = new JournalPrompt[] {
+        new JournalPrompt("INTRO", "Emotions in dreams are never disguised and often do not represent anything, but they are more self directed than we think.", InputType.NONE, null),
+        new JournalPrompt("FEELING_REFLECTION_INPUT", "Is there anything you've done recently that could make you feel <feeling> or <atmosphere> towards yourself?", InputType.OPEN_TEXT, null),
     };
     // Start is called before the first frame update
     void Start()
     {
         text_1.text = "";
         text_2.text = "";
-        date_text.text = System.DateTime.Now.ToShortDateString();
+        if (date_text != null) 
+        {
+            date_text.text = System.DateTime.Now.ToShortDateString();
+        }
+        
+
+        if (journalKey == "INTRO")
+        {
+            text_list = introJournalList;
+        }
+        else if (journalKey == "PAGE1") 
+        {
+            text_list = Journal1List;
+        }
+        else if (journalKey == "PAGE2")
+        {
+            text_list = Journal2List;
+        }
+        else if (journalKey == "PAGE3")
+        {
+            text_list = Journal3List;
+        }
     }
 
     // Update is called once per frame
@@ -68,10 +113,6 @@ public class Intro_Text : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !waiting_for_input) 
         {
             play_next_text();
-        }
-        if (!waiting_for_input && (text_2_current.Contains("_INPUT") || text_2_current.Contains("_DROPDOWN"))) 
-        {
-            apply_input(text_2_current);
         }
         make_name_header();
     }
@@ -86,17 +127,25 @@ public class Intro_Text : MonoBehaviour
 
     public void submit_input() 
     {
-        if (text_2_current.Contains("_INPUT"))
+        if (currentPrompt.inputType == InputType.OPEN_TEXT)
         {
-            GameData.user_inputs[current_input] = text_input_value.text;
+            GameData.user_inputs[currentPrompt.key] = text_input_value.text;
             text_input_value.text = string.Empty;
             text_input2.text = string.Empty;
             text_input.SetActive(false);
         }
-        if (text_2_current.Contains("_DROPDOWN"))
+        if (currentPrompt.inputType == InputType.DROP_DOWN)
         {
-            GameData.user_inputs[current_input] = dropdown_input_value.text;
+            GameData.user_inputs[currentPrompt.key] = dropdown_input_value.text;
             dropdown_parent.SetActive(false);
+        }
+        if (currentPrompt.inputType != InputType.NONE && currentPrompt.key != "NAME_INPUT")
+        {
+            text_1.text = text_1.text.Replace("...", " " + GameData.user_inputs[currentPrompt.key]) + ".\n";
+        }
+        else if(currentPrompt.key == "NAME_INPUT")
+        {
+            text_1.text = "";
         }
         waiting_for_input = false;
         play_next_text();
@@ -104,70 +153,68 @@ public class Intro_Text : MonoBehaviour
 
     void play_next_text() 
     {
-        if (text_index >= text_list.Length)
+        if (text_index >= text_list.Length - 1)
         {
-            SceneManager.LoadScene("Lucid");
+            if (journalKey == "INTRO") 
+            {
+                SceneManager.LoadScene("Lucid");
+            }
         }
         else 
         {
-            StopCoroutine("PlayText");
-            if (current_input != null && current_input != "NAME_INPUT")
+            text_index += 1;
+            currentPrompt = text_list[text_index];
+            if (currentPrompt.inputType == InputType.NONE)
             {
-                text_1.text = text_1.text.Replace("...", " " + GameData.user_inputs[current_input]) + ".\n";
+                text_2.text = currentPrompt.prompt;
             }
-            else 
+            else
             {
-                text_1.text = "";
+                text_2.text = "";
+                StopCoroutine("PlayText");
+                StartCoroutine("PlayText");
+                show_input();
             }
-            text_2.text = "";
-            text_1_current = "";
-            text_2_current = "";
-            text_1_current = text_list[text_index];
-            text_2_current = text_list[text_index + 1];
-
-            StartCoroutine("PlayText");
-            text_index += 2;
         }
     }
 
     IEnumerator PlayText()
     {
-        foreach (char c in text_1_current)
+        foreach (char c in currentPrompt.prompt)
         {
             text_1.text += c;
             yield return new WaitForSeconds(0.05f);
         }
-        if (!text_2_current.Contains("_INPUT") && !text_2_current.Contains("_DROPDOWN")) 
+    }
+
+    void show_input()
+    {
+        if (currentPrompt.inputType != InputType.NONE) 
         {
-            foreach (char c in text_2_current)
+            waiting_for_input = true;
+            if (currentPrompt.inputType == InputType.OPEN_TEXT)
             {
-                text_2.text += c;
-                yield return new WaitForSeconds(0.05f);
+                text_input_value.text = string.Empty;
+                text_input.SetActive(true);
+            }
+            if (currentPrompt.inputType == InputType.DROP_DOWN)
+            {
+                dropdown_input.ClearOptions();
+                foreach (string option in currentPrompt.inputOptions)
+                {
+                    m_NewData = new Dropdown.OptionData();
+                    m_NewData.text = option;
+                    m_Messages.Add(m_NewData);
+                }
+                dropdown_input.options = m_Messages;
+                dropdown_parent.SetActive(true);
             }
         }
     }
-
-    void apply_input(string text) 
+    public void submit_and_close()
     {
-        current_input = text;
-        text_2.text = "";
-        waiting_for_input = true;
-        if (text.Contains("_INPUT"))
-        {
-            text_input_value.text = string.Empty;
-            text_input.SetActive(true);
-        }
-        if (text.Contains("_DROPDOWN"))
-        {
-            dropdown_input.ClearOptions();
-            foreach (string option in dropdown_options[text])
-            {
-                m_NewData = new Dropdown.OptionData();
-                m_NewData.text = option;
-                m_Messages.Add(m_NewData);
-            }
-            dropdown_input.options = m_Messages;
-            dropdown_parent.SetActive(true);
-        }
+        submit_input();
+        journal_background.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

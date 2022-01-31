@@ -3,6 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+
+public class DialogOption
+{
+    public int id;
+    public String prompt;
+    public String option1;
+    public String option2;
+    public DialogOption(int i, String p, String op1, String op2)
+    {
+        id = i;
+        prompt = p;
+        option1 = op1;
+        option2 = op2;
+    }
+}
 
 public class Checkpoints : MonoBehaviour
 {

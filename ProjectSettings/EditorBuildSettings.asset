@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 7f339b8a9b73e754cafd87ced322306b
   - enabled: 1
     path: Assets/Scenes/Lucid.unity
-    guid: 7398a4346db14d44bbd507d70730d087
+    guid: fdafc2f8d6abb844ea4430eb0b31eb7a
   - enabled: 1
     path: Assets/Scenes/Tower.unity
     guid: 8ae8977c7ee8be243a2545dd72bbbd5b
