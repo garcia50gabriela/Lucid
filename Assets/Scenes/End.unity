@@ -1483,16 +1483,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '<place> during the <time> is a relevant place in my life right now.
+  m_Text: '<place reflection>
 
 
-    During
-    the dream I felt <feeling>, while the dream felt <atmosphere>. Which makes me
-    feel <feel now>.
+    <person reflection>
 
 
-    Right now I think this dream <meaning> I feel this way
-    because: <meaning_open>'
+    <feeling reflection>'
 --- !u!222 &2095509767
 CanvasRenderer:
   m_ObjectHideFlags: 0

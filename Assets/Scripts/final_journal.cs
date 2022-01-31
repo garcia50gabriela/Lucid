@@ -24,13 +24,9 @@ public class final_journal : MonoBehaviour
         dream_text.text = dream_text.text.Replace("<atmosphere>", GameData.user_inputs["ATMOSPHERE_DROPDOWN"]);
         dream_text.text = dream_text.text.Replace("<open_input>", GameData.user_inputs["OPEN_INPUT"]);
 
-        reflective_text.text = reflective_text.text.Replace("<place>", GameData.user_inputs["LOCATION_DROPDOWN"]);
-        reflective_text.text = reflective_text.text.Replace("<time>", GameData.user_inputs["TIME_DAY_DROPDOWN"]);
-        reflective_text.text = reflective_text.text.Replace("<feeling>", GameData.user_inputs["FEELING_DROPDOWN"]);
-        reflective_text.text = reflective_text.text.Replace("<atmosphere>", GameData.user_inputs["ATMOSPHERE_DROPDOWN"]);
-        reflective_text.text = reflective_text.text.Replace("<feel now>", GameData.user_inputs["FEEL_NOW_DROPDOWN"]);
-        reflective_text.text = reflective_text.text.Replace("<meaning>", GameData.user_inputs["MEANING_DROPDOWN"]);
-        reflective_text.text = reflective_text.text.Replace("<meaning_open>", GameData.user_inputs["MEANING_INPUT"]);
+        reflective_text.text = reflective_text.text.Replace("<place reflection>", GameData.user_inputs["PLACE_REFLECTION_INPUT"]);
+        reflective_text.text = reflective_text.text.Replace("<person reflection>", GameData.user_inputs["PERSON_REFLECTION_INPUT"]);
+        reflective_text.text = reflective_text.text.Replace("<feeling reflection>", GameData.user_inputs["FEELING_REFLECTION_INPUT"]);
 
         date_text.text = System.DateTime.Now.ToShortDateString();
     }

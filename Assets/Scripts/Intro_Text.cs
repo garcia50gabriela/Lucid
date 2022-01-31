@@ -81,8 +81,6 @@ public class Intro_Text : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text_1.text = "";
-        text_2.text = "";
         if (date_text != null) 
         {
             date_text.text = System.DateTime.Now.ToShortDateString();
@@ -105,6 +103,31 @@ public class Intro_Text : MonoBehaviour
         {
             text_list = Journal3List;
         }
+
+        currentPrompt = text_list[text_index];
+        
+    }
+
+    private void OnEnable()
+    {
+        if (journalKey == "INTRO")
+        {
+            text_list = introJournalList;
+        }
+        else if (journalKey == "PAGE1")
+        {
+            text_list = Journal1List;
+        }
+        else if (journalKey == "PAGE2")
+        {
+            text_list = Journal2List;
+        }
+        else if (journalKey == "PAGE3")
+        {
+            text_list = Journal3List;
+        }
+        currentPrompt = text_list[text_index];
+        text_2.text = currentPrompt.prompt;
     }
 
     // Update is called once per frame
@@ -216,5 +239,7 @@ public class Intro_Text : MonoBehaviour
         submit_input();
         journal_background.SetActive(false);
         gameObject.SetActive(false);
+        text_2.text = "";
+        text_1.text = "";
     }
 }
