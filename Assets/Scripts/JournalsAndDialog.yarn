@@ -173,7 +173,7 @@ position: 2726,-709
 <<if $person_pov_connection is true>>
 	The {$person} in your dream seems to be connected to the {$perspective}-person perspective of your dream. Could that person represent a part of your life that you feel [select value={$perspective} first="is repeating itself or happening again" third="like you've moved on from" mixed="has passed but you still miss it" /]?
 <<else>>
-	The {$person} in your dream doesn't seems to be connected to the {$perspective} of your dream.
+	The {$person} in your dream doesn't seems to be connected to the {$perspective}-person perspective of your dream.
 <<endif>>
 <<close_journal JournalCheckpoint1>>
 ===
@@ -218,7 +218,7 @@ position: 3694,-701
 <<if $time_pov_connection is true>>
 	The {$dream_time} setting of your dream seems to be connected to the {$perspective}-person perspective of your dream. Could that setting represent a part of your life that you feel [select value={$perspective} first="is repeating itself or happening again" third="like you've moved on from" mixed="has passed but you still miss it" /]?
 <<else>>
-	The {$dream_time} setting of your dream doesn't seems to be connected to the {$perspective} of your dream.
+	The {$dream_time} setting of your dream doesn't seems to be connected to the {$perspective}-person perspective of your dream.
 <<endif>>
 <<close_journal JournalCheckpoint2>>
 ===

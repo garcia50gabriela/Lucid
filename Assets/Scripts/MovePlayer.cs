@@ -171,7 +171,7 @@ public class MovePlayer : MonoBehaviour
         var p_y = transform.position.y;
         
         var player_z = ((m_y - p_y) * m_z) / m_y;
-        return -(player_z + 0.30f);
+        return -(player_z + 0.29f);
     }
 
     void respawn_if_fallen()
