@@ -1,0 +1,422 @@
+[
+	{
+		"title": "START",
+		"tags": "",
+		"body": "have you ever wondered what a dream could mean?\n[[Yeah, sometimes.|WONDER]]\n[[Not really.|WONDER]]",
+		"position": {
+			"x": 770,
+			"y": 195
+		},
+		"colorID": 0
+	},
+	{
+		"title": "WONDER",
+		"tags": "",
+		"body": "It can be fun to think about! Do you think you could remember a recent dream?\n[[Yes, I have one in mind.|DREAM]]\n[[No, I can't think of any.|NODREAM]]",
+		"position": {
+			"x": 862,
+			"y": -89
+		},
+		"colorID": 0
+	},
+	{
+		"title": "DREAM",
+		"tags": "",
+		"body": "That's great, well I am your dream journal, so let's try writing about it.\n[[Okay, let's start.|JOURNAL]]",
+		"position": {
+			"x": 982,
+			"y": -309
+		},
+		"colorID": 0
+	},
+	{
+		"title": "NODREAM",
+		"tags": "",
+		"body": "That's too bad, well, journaling can sometimes help people remember their dreams. For now we can journal about general dreams or recurring thoughts.\n[[okay, i'll try...|JOURNAL]]",
+		"position": {
+			"x": 1202,
+			"y": -309
+		},
+		"colorID": 0
+	},
+	{
+		"title": "JOURNAL",
+		"tags": "",
+		"body": "How were you feeling during the dream?\n[[I felt good.|POSITIVE]]\n[[I felt fine.|NEUTRAL]]\n[[I felt bad.|NEGATIVE]]",
+		"position": {
+			"x": 1102,
+			"y": -529
+		},
+		"colorID": 0
+	},
+	{
+		"title": "POSITIVE",
+		"tags": "",
+		"body": "<<set $dream_mood to \"positive\">>\n[[SLEEPQUALITY]]",
+		"position": {
+			"x": 1222,
+			"y": -749
+		},
+		"colorID": 0
+	},
+	{
+		"title": "NEUTRAL",
+		"tags": "",
+		"body": "<<set $dream_mood to \"neutral\">>\n[[SLEEPQUALITY]]",
+		"position": {
+			"x": 1442,
+			"y": -749
+		},
+		"colorID": 0
+	},
+	{
+		"title": "NEGATIVE",
+		"tags": "",
+		"body": "<<set $dream_mood to \"negative\">>\n[[SLEEPQUALITY]]",
+		"position": {
+			"x": 1662,
+			"y": -749
+		},
+		"colorID": 0
+	},
+	{
+		"title": "SLEEPQUALITY",
+		"tags": "",
+		"body": "<<if $dream_mood is \"positive\">>\n    That's great!\n<<elseif $dream_mood is \"neutral\">>\n    Oh, interesting!\n<<elseif $dream_mood is \"negative\" >>\n    Oh no, I'm sorry!\n<<endif>>\nDid you sleep well that night?\n[[Yes, I slept like a baby.|HIGHQUALITY]]\n[[It was a normal night's sleep|AVERAGEQUALITY]]\n[[No, I was tossing and turning all night.|LOWQUALITY]]",
+		"position": {
+			"x": 1340,
+			"y": -969
+		},
+		"colorID": 0
+	},
+	{
+		"title": "HIGHQUALITY",
+		"tags": "",
+		"body": "<<set $dream_quality to \"high\">>\n[[PLACE]]",
+		"position": {
+			"x": 1460,
+			"y": -1189
+		},
+		"colorID": 0
+	},
+	{
+		"title": "AVERAGEQUALITY",
+		"tags": "",
+		"body": "<<set $dream_quality to \"average\">>\n[[PLACE]]",
+		"position": {
+			"x": 1678,
+			"y": -1189
+		},
+		"colorID": 0
+	},
+	{
+		"title": "LOWQUALITY",
+		"tags": "",
+		"body": "<<set $dream_quality to \"low\">>\n[[PLACE]]",
+		"position": {
+			"x": 1900,
+			"y": -1189
+		},
+		"colorID": 0
+	},
+	{
+		"title": "PLACE",
+		"tags": "",
+		"body": "<<if $dream_quality is \"high\">>\n    You must feel well rested!\n<<elseif $dream_quality is \"average\">>\n    Glad, you got some rest!\n<<elseif $dream_quality is \"low\" >>\n    Hope you get some rest soon!\n<<endif>>\nWhen did the dream take place?\n[[In the past.|PAST]]\n[[In the present.|PRESENT]]\n[[In the future.|FUTURE]]",
+		"position": {
+			"x": 1580,
+			"y": -1409
+		},
+		"colorID": 0
+	},
+	{
+		"title": "PAST",
+		"tags": "",
+		"body": "<<set $dream_time to \"past\">>\n[[PERSON]]",
+		"position": {
+			"x": 1700,
+			"y": -1629
+		},
+		"colorID": 0
+	},
+	{
+		"title": "PRESENT",
+		"tags": "",
+		"body": "<<set $dream_time to \"present\">>\n[[PERSON]]",
+		"position": {
+			"x": 1920,
+			"y": -1629
+		},
+		"colorID": 0
+	},
+	{
+		"title": "FUTURE",
+		"tags": "",
+		"body": "<<set $dream_time to \"future\">>\n[[PERSON]]",
+		"position": {
+			"x": 2140,
+			"y": -1629
+		},
+		"colorID": 0
+	},
+	{
+		"title": "PERSON",
+		"tags": "",
+		"body": "Was anyone there with you?\n[[I was with people who are or were my friends.|FRIENDS]]\n[[I was with family.|FAMILY]]\n[[I was with people I don't know very well.|ACQUAINTANCE]]",
+		"position": {
+			"x": 1820,
+			"y": -1849
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Friends",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 1940,
+			"y": -2069
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Family",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 2160,
+			"y": -2069
+		},
+		"colorID": 0
+	},
+	{
+		"title": "ACQUAINTANCE",
+		"tags": "",
+		"body": "<<set $person to \"acquaintance\">>\n[[PERSPECTIVE]]",
+		"position": {
+			"x": 2380,
+			"y": -2069
+		},
+		"colorID": 0
+	},
+	{
+		"title": "FRIENDS",
+		"tags": "",
+		"body": "<<set $person to \"friend\">>\n[[PERSPECTIVE]]",
+		"position": {
+			"x": 1940,
+			"y": -2069
+		},
+		"colorID": 0
+	},
+	{
+		"title": "FAMILY",
+		"tags": "",
+		"body": "<<set $person to \"family\">>\n[[PERSPECTIVE]]",
+		"position": {
+			"x": 2160,
+			"y": -2069
+		},
+		"colorID": 0
+	},
+	{
+		"title": "PERSPECTIVE",
+		"tags": "",
+		"body": "Were you part of the dream or just observing?\n[[I was part of the dream.|FIRSTPERSON]]\n[[I was just watching the dream.|THIRDPERSON]]\n[[I was watching myself in the dream.|MIXEDPERSON]]",
+		"position": {
+			"x": 2060,
+			"y": -2289
+		},
+		"colorID": 0
+	},
+	{
+		"title": "FIRSTPERSON",
+		"tags": "",
+		"body": "<<set $perspective to \"first\">>",
+		"position": {
+			"x": 2180,
+			"y": -2509
+		},
+		"colorID": 0
+	},
+	{
+		"title": "THIRDPERSON",
+		"tags": "",
+		"body": "<<set $perspective to \"third\">>",
+		"position": {
+			"x": 2400,
+			"y": -2509
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MIXEDPERSON",
+		"tags": "",
+		"body": "<<set $perspective to \"mixed\">>",
+		"position": {
+			"x": 2617,
+			"y": -2509
+		},
+		"colorID": 0
+	},
+	{
+		"title": "JOURNAL1",
+		"tags": "",
+		"body": "Are their any qualities about the {$person} from your dream that [select {$dream_mood} positive=\"you like\" nuetral=\"you don't care for\" negative=\"you really dislike\"]?\n[[Yes.|YESPERSONMOOD]]\n[[No.|NOPERSONMOOD]]",
+		"position": {
+			"x": 2246,
+			"y": 174
+		},
+		"colorID": 0
+	},
+	{
+		"title": "YESPERSONMOOD",
+		"tags": "",
+		"body": "<<set $person_mood_connection to true>>\n[[PERSONPERSPECTIVE]]",
+		"position": {
+			"x": 2366,
+			"y": -47
+		},
+		"colorID": 0
+	},
+	{
+		"title": "NOPERSONMOOD",
+		"tags": "",
+		"body": "<<set $person_mood_connection to false>>\n[[PERSONPERSPECTIVE]]",
+		"position": {
+			"x": 2586,
+			"y": -46
+		},
+		"colorID": 0
+	},
+	{
+		"title": "PERSONPERSPECTIVE",
+		"tags": "",
+		"body": "Do you feel [select {$perspective} first=\"close to\" third=\"disconnected from\" mixed=\"like your relationship is changing with\"] the {$person} in your dream?\n[[Yes.|YESPERSONPOV]]\n[[No.|NOPERSONPOV]]",
+		"position": {
+			"x": 2486,
+			"y": -267
+		},
+		"colorID": 0
+	},
+	{
+		"title": "YESPERSONPOV",
+		"tags": "",
+		"body": "<<set $person_pov_connection to true>>\n[[JOURNAL1END]]",
+		"position": {
+			"x": 2606,
+			"y": -487
+		},
+		"colorID": 0
+	},
+	{
+		"title": "NOPERSONPOV",
+		"tags": "",
+		"body": "<<set $person_mood_pov to false>>\n[[JOURNAL1END]]",
+		"position": {
+			"x": 2826,
+			"y": -487
+		},
+		"colorID": 0
+	},
+	{
+		"title": "JOURNAL1END",
+		"tags": "",
+		"body": "<<if $person_mood_connection is true>>\r\n\tThe {$person} in your dream seems to be related to the {$dream_mood} tone of your dream. How could that person represent a shared quality about yourself that is making you feel [select {$dream_mood} positive=\"happy\" negative=\"sad\" nuetral=\"detached\"]?\r\n<<else>>\r\n\tThe {$person} in your dream doesn't seems to be related to the {$dream_mood} tone of your dream.\r\n<<endif>>\r\n\r\n<<if $person_pov_connection is true>>\r\n\tThe {$person} in your dream seems to be connected to the {$perspective}-person perspective of your dream. Could that person represent a part of your life that you feel [select {$perspective} first=\"is repeating itself or happening again\" third=\"like you've moved on from\" mixed=\"has passed but you still miss it\"]?\r\n<<else>>\r\n\tThe {$person} in your dream doesn't seems to be connected to the {$perspective} of your dream.\r\n<<endif>>",
+		"position": {
+			"x": 2726,
+			"y": -709
+		},
+		"colorID": 0
+	},
+	{
+		"title": "JOURNAL2",
+		"tags": "",
+		"body": "Do you feel [select {$dream_mood} positive=\"optimistic about\" nuetral=\"confused about\" negative=\"worried or unproud of\"] the {$dream_time} event that took place in your dream?\n[[Yes.|YESTIMEMOOD]]\n[[No.|NOTIMEMOOD]]",
+		"position": {
+			"x": 3216,
+			"y": 178
+		},
+		"colorID": 0
+	},
+	{
+		"title": "YESTIMEMOOD",
+		"tags": "",
+		"body": "<<set $time_mood_connection to true>>\n[[TIMEPERSPECTIVE]]",
+		"position": {
+			"x": 3334,
+			"y": -41
+		},
+		"colorID": 0
+	},
+	{
+		"title": "NOTIMEMOOD",
+		"tags": "",
+		"body": "<<set $time_mood_connection to false>>\n[[TIMEPERSPECTIVE]]",
+		"position": {
+			"x": 3556,
+			"y": -42
+		},
+		"colorID": 0
+	},
+	{
+		"title": "TIMEPERSPECTIVE",
+		"tags": "",
+		"body": "Do you feel that the {$dream_time} event that took place in your dream [select {$perspective} first=\"is vital\" third=\"is unimportant\" mixed=\"could be important\"] to who you are now?\n[[Yes.|YESTIMEPERSPECTIVE]]\n[[No.|NOTIMEPERSPECTIVE]]",
+		"position": {
+			"x": 3454,
+			"y": -261
+		},
+		"colorID": 0
+	},
+	{
+		"title": "YESTIMEPERSPECTIVE",
+		"tags": "",
+		"body": "<<set $time_pov_connection to true>>\n[[JOURNAL2END]]",
+		"position": {
+			"x": 3574,
+			"y": -481
+		},
+		"colorID": 0
+	},
+	{
+		"title": "NOTIMEPERSPECTIVE",
+		"tags": "",
+		"body": "<<set $time_pov_connection to false>>\n[[JOURNAL2END]]",
+		"position": {
+			"x": 3794,
+			"y": -481
+		},
+		"colorID": 0
+	},
+	{
+		"title": "JOURNAL2END",
+		"tags": "",
+		"body": "<<if $time_mood_connection is true>>\r\n\tThe {$dream_time} setting of your dream seems to be related to the {$dream_mood} tone of your dream. How could that setting represent a part about yourself that is making you feel [select {$dream_mood} positive=\"happy\" negative=\"sad\" nuetral=\"detached\"]?\r\n<<else>>\r\n\tThe {$dream_time} setting of your dream doesn't seems to be related to the {$dream_mood} tone of your dream.\r\n<<endif>>\r\n\r\n<<if $time_pov_connection is true>>\r\n\tThe {$dream_time} setting of your dream seems to be connected to the {$perspective}-person perspective of your dream. Could that setting represent a part of your life that you feel [select {$perspective} first=\"is repeating itself or happening again\" third=\"like you've moved on from\" mixed=\"has passed but you still miss it\"]?\r\n<<else>>\r\n\tThe {$dream_time} setting of your dream doesn't seems to be connected to the {$perspective} of your dream.\r\n<<endif>>",
+		"position": {
+			"x": 3694,
+			"y": -701
+		},
+		"colorID": 0
+	},
+	{
+		"title": "JOURNAL3",
+		"tags": "",
+		"body": "<<if $dream_quality is \"high\">>\r\n    Given that you've been sleeping well, I would say that despite the things on your mind you are processing and dealing with them well. \r\n<<if $dream_quality is \"low\">>\r\n    Given that you haven't been sleeping well, I would say that the things on your mind you bothering you and might feel unresolved.\r\n<<else>>\r\n\tSince you've had average sleep, it's hard to say if these dreams represent things that are bothering you or not.\r\n<<endif>>\r\n\r\n<<if $person_mood_connection is true || $person_pov_connection is true || $time_mood_connection is true || $time_pov_connection is true>>\r\n    We found some connections between the aspects you wrote about in your dreams. I hope I encouraged you to think about them more and that it can be insightful.\r\n<<endif>>\r\n\r\n<<if $person_mood_connection is false && $person_pov_connection is false && $time_mood_connection is false && $time_pov_connection is false>>\r\n    We didn't find any connections between the aspects in your dream that we wrote about, and that's okay. There might be other parts of you dream that are worth thinking about.\r\n<<endif>>\r\n\r\n[[Sure|JOUNRAL3END]]",
+		"position": {
+			"x": 4246,
+			"y": 178
+		},
+		"colorID": 0
+	},
+	{
+		"title": "JOUNRAL3END",
+		"tags": "",
+		"body": "We can't always control our dreams or our feelings. But we can control how we respond to them and what they mean to us. I hope this journal was a helpful exercise and that if something is weighting heavy on your mind that you'll give yourself the space to express and acknowledge it. Writing in a journal can be a good way to do that!",
+		"position": {
+			"x": 4366,
+			"y": -42
+		},
+		"colorID": 0
+	}
+]

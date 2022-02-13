@@ -242,4 +242,11 @@ public class Intro_Text : MonoBehaviour
         text_2.text = "";
         text_1.text = "";
     }
+    public void instructions_submit_and_close()
+    {
+        journal_background.SetActive(false);
+        gameObject.SetActive(false);
+    }
+
+
 }

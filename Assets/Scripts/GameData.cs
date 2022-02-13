@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class GameData
 {
@@ -20,6 +21,14 @@ public static class GameData
         {"PERSON_REFLECTION_INPUT", "confused" },
         {"FEELING_REFLECTION_INPUT", "means something."}
     };
+    public static Dictionary<string, object> variables = new Dictionary<string, object>()
+    {
+        {"$dream_mood", "positive" },
+        {"$dream_quality", "low" },
+        {"$dream_time", "past" },
+        {"$person", "friend" },
+        {"$perspective", "first" },
+    };
     public static bool story_mode = false;
     public static int story_index = 0;
     public static int journal_phase = 0;
@@ -31,4 +40,10 @@ public static class GameData
     public static Vector3 ivyPos;
     public static int overlapIvy = 0;
     public static Transform ivyParent;
+    
+    [Yarn.Unity.YarnCommand("load_game")]
+    public static void load_game()
+    {
+        SceneManager.LoadScene("Lucid");
+    }
 }

@@ -227,11 +227,13 @@ public class MovePlayer : MonoBehaviour
             if (GameData.insideIvy)
             {
                 GameData.insideIvy = false;
+                gameObject.transform.eulerAngles = new Vector3(0, 90, 0);
             }
             else 
             {
                 ivyIndex = 0;
                 GameData.insideIvy = true;
+                gameObject.transform.eulerAngles = new Vector3(0, -90, 0);
             }
             
         }
@@ -244,6 +246,7 @@ public class MovePlayer : MonoBehaviour
             if (GameData.insideIvy)
             {
                 GameData.insideIvy = false;
+                gameObject.transform.eulerAngles = new Vector3(0, 90, 0);
             }
         }
     }

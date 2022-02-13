@@ -135,7 +135,7 @@ public class Checkpoints : MonoBehaviour
             if (gameObject.tag == "journal")
             {
                 journalCheckpoint();
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
             }
             if (gameObject.tag == "checkpoint") 
             {
@@ -201,6 +201,14 @@ public class Checkpoints : MonoBehaviour
     {
         journal_background.SetActive(true);
         journal_portion.SetActive(true);
+    }
+
+    [Yarn.Unity.YarnCommand("close_journal")]
+    public void closeJournal() 
+    {
+        journal_background.SetActive(false);
+        journal_portion.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     void show_lucy_image(string tex)
