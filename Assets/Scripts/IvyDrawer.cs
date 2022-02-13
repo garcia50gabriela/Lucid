@@ -52,25 +52,28 @@ public class IvyDrawer : MonoBehaviour
             drawIvy();
         }
 
+        if (!tower) 
+        {
+            if (firstClick)
+            {
+                timePassed += Time.deltaTime;
+            }
 
-        if (firstClick)
-        {
-            timePassed += Time.deltaTime;
-        }
+            if (timePassed > 15f)
+            {
+                expire_ivy();
+            }
 
-        if (timePassed > 15f)
-        {
-            expire_ivy();
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.F))
+            {
+                expire_ivy();
+            }
+            if (timePassed > 8f)
+            {
+                fade_ivy_color();
+            }
         }
-
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.F)) 
-        {
-            expire_ivy();
-        }
-        if (timePassed > 8f) 
-        {
-            fade_ivy_color();
-        }
+        
         
     }
 
@@ -128,6 +131,7 @@ public class IvyDrawer : MonoBehaviour
                     lastIvy.transform.localRotation = rot;
                     ivyColliderCounter++;
                     GameData.last_ivy_pos = lastIvy.transform.position;
+                    GameData.last_ivy = lastIvy;
                     if (ivyColliderCounter == 1)
                     {
                         first_mesh_point = lastIvy.transform.position;
@@ -175,7 +179,12 @@ public class IvyDrawer : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
         GameData.last_ivy_pos = lastIvy.transform.position;
-        player.GetComponent<MovePlayer>().stop_climbing();
+        GameData.last_ivy = ivy;
+        if (player != null) 
+        {
+            player.GetComponent<MovePlayer>().stop_climbing_this(this);
+        }
+        
     }
 
     void fade_ivy_color() 

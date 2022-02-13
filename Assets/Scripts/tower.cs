@@ -18,6 +18,7 @@ public class tower : MonoBehaviour
     {
         tower_start_pos = transform.position;
         tower_start_rot = transform.rotation;
+
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class tower : MonoBehaviour
             started = true;
             transform.Rotate(new Vector3(0, -((Screen.width / 2) - Input.mousePosition.x), 0) * Time.deltaTime * 1f);
         }
-        if (GameData.last_ivy_pos.y <= -(tower_distance + 10f)) 
+        if (GameData.last_ivy != null &&GameData.last_ivy.transform.position.y <= -(10)) 
         {
             restart();
         }
@@ -56,7 +57,6 @@ public class tower : MonoBehaviour
     }
     void restart() 
     {
-        print("restart");
         transform.position = tower_start_pos;
         transform.rotation = tower_start_rot;
         tower_distance = 0;

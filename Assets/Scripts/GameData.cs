@@ -34,6 +34,7 @@ public static class GameData
     public static int journal_phase = 0;
     public static bool drawing_ivy = false;
     public static Vector3 last_ivy_pos;
+    public static GameObject last_ivy;
     // ivy
     public static bool insideIvy = false;
     public static bool insideIvyTrigger = false;

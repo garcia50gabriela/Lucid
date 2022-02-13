@@ -255,4 +255,11 @@ public class MovePlayer : MonoBehaviour
     {
         GameData.insideIvy = false;
     }
+    public void stop_climbing_this(IvyDrawer ivy_drawer)
+    {
+        if (GameData.ivyParent == ivy_drawer.transform.parent) 
+        {
+            GameData.insideIvy = false;
+        }
+    }
 }
