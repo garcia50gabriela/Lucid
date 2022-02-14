@@ -26,17 +26,16 @@ colorID: 0
 position: 982,-309
 ---
 That's great, well I am your dream journal, so let's try writing about it.
--> Okay, let's start.
-    << jump JOURNAL>>
+<< jump JOURNAL>>
 ===
 title: NODREAM
 tags: 
 colorID: 0
 position: 1202,-309
 ---
-That's too bad, well, journaling can sometimes help people remember their dreams. For now we can journal about general dreams or recurring thoughts.
--> okay, i'll try...
-    << jump JOURNAL>>
+That's too bad, well, journaling can sometimes help people remember their dreams.
+We can still give it a try by answering questions about your dreams in general.
+<< jump JOURNAL>>
 ===
 title: JOURNAL
 tags: 
@@ -89,7 +88,7 @@ position: 1513,-845
 <<elseif $dream_quality is "low" >>
     Hope you get some rest soon!
 <<endif>>
-When did the dream take place?
+Based on the events or things there, when did the dream seem to take place?
 -> In the past.
     <<set $dream_time to "past">>
     << jump PERSON>>
@@ -105,14 +104,14 @@ tags:
 colorID: 0
 position: 1679,-1010
 ---
-Was anyone there with you?
--> I was with people who are or were my friends.
+Was anyone else in the dream?
+-> There were current or former friends there.
     <<set $person to "friend">>
     << jump PERSPECTIVE>>
--> I was with family.
+-> My family was there.
     <<set $person to "family">>
     << jump PERSPECTIVE>>
--> I was with people I don't know very well.
+-> There were people I don't know very well or at all.
     <<set $person to "acquaintance">>
     << jump PERSPECTIVE>>
 ===
@@ -124,21 +123,30 @@ position: 1896,-1170
 Were you part of the dream or just observing?
 -> I was part of the dream.
     <<set $perspective to "first">>
-    <<load_game>>
--> I was just watching the dream.
+    <<jump INTROEND>>
+-> I was just watching the dream, not partaking.
     <<set $perspective to "third">>
-    <<load_game>>
--> I was watching myself in the dream.
+    <<jump INTROEND>>
+-> I was in the dream, but watching myself as an outsider.
     <<set $perspective to "mixed">>
-    <<load_game>>
+    <<jump INTROEND>>
 
+===
+title: INTROEND
+tags: 
+colorID: 0
+position: 1896,-1170
+---
+Thanks for answering those questions!
+Recalling dreams is a good start. Trying to understand them is another story.
+<<load_game>>
 ===
 title: JOURNAL1
 tags: 
 colorID: 0
 position: 2246,174
 ---
-Are there any qualities about the {$person} from your dream that [select value={$dream_mood} positive="you like" neutral="you don't care for" negative="you really dislike" /]?
+How do you feel about the {$person} from your dream? Do you [select value={$dream_mood} positive="like them" neutral="not care for them" negative="dislike them" /]?
 -> Yes.
     <<set $person_mood_connection to true>>
     <<jump PERSONPERSPECTIVE>>
@@ -165,15 +173,17 @@ colorID: 0
 position: 2726,-709
 ---
 <<if $person_mood_connection is true>>
-	The {$person} in your dream seems to be related to the {$dream_mood} tone of your dream. How could that person represent a shared quality about yourself that is making you feel [select value={$dream_mood} positive="happy" negative="sad" neutral="detached" /]?
+	The {$person} in your dream seems to be related to the {$dream_mood} tone of your dream.
+    That person may represent a shared quality about yourself that you [select value={$dream_mood} positive="like" negative="dislike" neutral="have mixed feelings about" /].
 <<else>>
 	The {$person} in your dream doesn't seems to be related to the {$dream_mood} tone of your dream.
 <<endif>>
 
 <<if $person_pov_connection is true>>
-	The {$person} in your dream seems to be connected to the {$perspective}-person perspective of your dream. Could that person represent a part of your life that you feel [select value={$perspective} first="is repeating itself or happening again" third="like you've moved on from" mixed="has passed but you still miss it" /]?
+	The {$person} in your dream seems to be connected to the {$perspective}-person perspective of your dream.
+    That person could represent a part of your life or memory that you feel [select value={$perspective} first="is repeating itself or happening again" third="like you've moved on from" mixed="you miss" /].
 <<else>>
-	The {$person} in your dream doesn't seems to be connected to the {$perspective}-person perspective of your dream.
+	The {$person} in your dream doesn't seem to be connected to the {$perspective}-person perspective of your dream.
 <<endif>>
 <<close_journal JournalCheckpoint1>>
 ===
@@ -182,7 +192,7 @@ tags:
 colorID: 0
 position: 3216,178
 ---
-Do you feel [select value={$dream_mood} positive="optimistic about" neutral="confused about" negative="worried or unproud of" /] the {$dream_time} event that took place in your dream?
+Do you feel [select value={$dream_mood} positive="optimistic about" neutral="confused about" negative="worried or unproud of" /] the {$dream_time}?
 -> Yes.
     <<set $time_mood_connection to true>>
     << jump TIMEPERSPECTIVE>>
@@ -210,13 +220,15 @@ colorID: 0
 position: 3694,-701
 ---
 <<if $time_mood_connection is true>>
-	The {$dream_time} setting of your dream seems to be related to the {$dream_mood} tone of your dream. How could that setting represent a part about yourself that is making you feel [select value={$dream_mood} positive="happy" negative="sad" neutral="detached" /]?
+	The {$dream_time} setting of your dream seems to be related to the {$dream_mood} tone of your dream.
+    The {$dream_time} may represent something that is making you feel [select value={$dream_mood} positive="happy" negative="sad" neutral="detached" /]?
 <<else>>
 	The {$dream_time} setting of your dream doesn't seems to be related to the {$dream_mood} tone of your dream.
 <<endif>>
 
 <<if $time_pov_connection is true>>
-	The {$dream_time} setting of your dream seems to be connected to the {$perspective}-person perspective of your dream. Could that setting represent a part of your life that you feel [select value={$perspective} first="is repeating itself or happening again" third="like you've moved on from" mixed="has passed but you still miss it" /]?
+	The {$dream_time} setting of your dream seems to be connected to the {$perspective}-person perspective of your dream.
+    You may feel [select value={$perspective} first="fond of or excited for" third="like you've moved on from" mixed="unsure or confused about" /] the {$dream_time}.
 <<else>>
 	The {$dream_time} setting of your dream doesn't seems to be connected to the {$perspective}-person perspective of your dream.
 <<endif>>
@@ -230,28 +242,29 @@ position: 4246,178
 <<if $dream_quality is "high">>
     Given that you've been sleeping well, I would say that despite the things on your mind you are processing and dealing with them well. 
 <<elseif $dream_quality is "low">>
-    Given that you haven't been sleeping well, I would say that the things on your mind you bothering you and might feel unresolved.
+    Given that you haven't been sleeping well, I would say that the things on your mind are bothering you and might feel unresolved.
 <<else>>
 	Since you've had average sleep, it's hard to say if these dreams represent things that are bothering you or not.
 <<endif>>
 
 <<if $person_mood_connection is true ||  $person_pov_connection is true ||  $time_mood_connection is true ||  $time_pov_connection is true>>
-    We found some connections between the aspects you wrote about in your dreams. I hope I encouraged you to think about them more and that it can be insightful.
+    It seems like there's some connections between the aspects you wrote about in your dreams.
+    It can be helpful to try and think about what those things might mean to you.
 <<endif>>
 
 <<if $person_mood_connection is false && $person_pov_connection is false && $time_mood_connection is false && $time_pov_connection is false>>
-    We didn't find any connections between the aspects in your dream that we wrote about, and that's okay. There might be other parts of you dream that are worth thinking about.
+    There didn't seem to be any connections between the aspects in your dream, and that's okay.
+    There might be other parts of you dream that are worth thinking about.
 <<endif>>
-
--> Sure
-    << jump JOUNRAL3END>>
+<<jump JOUNRAL3END>>
 ===
 title: JOUNRAL3END
 tags: 
 colorID: 0
 position: 4366,-42
 ---
-We can't always control our dreams or our feelings. But we can control how we respond to them and what they mean to us.
-I hope this journal was a helpful exercise and that if something is weighting heavy on your mind that you'll give yourself the space to express and acknowledge it. Writing in a journal can be a good way to do that!
+We can't always control our dreams or our feelings.
+But we can control how we respond to them and what they mean to us.
+Writing in a journal can be a good way to do that!
 <<close_journal JournalCheckpoint3>>
 ===

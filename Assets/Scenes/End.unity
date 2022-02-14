@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <name>'s Dream
+  m_Text: My Dream
 --- !u!222 &143770699
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -524,23 +524,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'My Dream took place in the <time_day>.
+  m_Text: 'My Dream took place in the $dream_time.
 
-    It all happened at <place>.
+
+    It was a $dream_mood dream.
+
 
     I
-    was with a <person>.
+    was with $person.
 
-    The event taking place: <event>
 
-    I felt <feeling>.
+    I dreamnt it in a $perspective-person perspective.
 
-    The
-    atmosphere felt <atmosphere>.
 
-    Some other things I can remember:
-
-    <open_input>
+    My
+    sleep quality was $dream_quality that night.
 
 '
 --- !u!222 &748470118
@@ -880,7 +878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &996643483
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1483,13 +1481,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '<place reflection>
+  m_Text: '$person_mood_connection
 
 
-    <person reflection>
+    $person_pov_connection
 
 
-    <feeling reflection>'
+    $time_mood_connection
+
+
+    $time_pov_connection'
 --- !u!222 &2095509767
 CanvasRenderer:
   m_ObjectHideFlags: 0

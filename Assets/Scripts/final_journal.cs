@@ -14,19 +14,54 @@ public class final_journal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        header.text = header.text.Replace("<name>", GameData.user_inputs["NAME_INPUT"]);
+        //header.text = header.text.Replace("<name>", GameData.user_inputs["NAME_INPUT"]);
 
-        dream_text.text = dream_text.text.Replace("<time_day>", GameData.user_inputs["TIME_DAY_DROPDOWN"]);
-        dream_text.text = dream_text.text.Replace("<place>", GameData.user_inputs["LOCATION_DROPDOWN"]);
-        dream_text.text = dream_text.text.Replace("<person>", GameData.user_inputs["PERSON_DROPDOWN"]);
-        dream_text.text = dream_text.text.Replace("<event>", GameData.user_inputs["HAPPENING_INPUT"]);
-        dream_text.text = dream_text.text.Replace("<feeling>", GameData.user_inputs["FEELING_DROPDOWN"]);
-        dream_text.text = dream_text.text.Replace("<atmosphere>", GameData.user_inputs["ATMOSPHERE_DROPDOWN"]);
-        dream_text.text = dream_text.text.Replace("<open_input>", GameData.user_inputs["OPEN_INPUT"]);
+        dream_text.text = dream_text.text.Replace("$dream_mood", (string)GameData.variables["$dream_mood"]);
+        dream_text.text = dream_text.text.Replace("$dream_quality", (string)GameData.variables["$dream_quality"]);
+        dream_text.text = dream_text.text.Replace("$dream_time", (string)GameData.variables["$dream_time"]);
+        dream_text.text = dream_text.text.Replace("$person", (string)GameData.variables["$person"]);
+        dream_text.text = dream_text.text.Replace("$perspective", (string)GameData.variables["$perspective"]);
 
-        reflective_text.text = reflective_text.text.Replace("<place reflection>", GameData.user_inputs["PLACE_REFLECTION_INPUT"]);
-        reflective_text.text = reflective_text.text.Replace("<person reflection>", GameData.user_inputs["PERSON_REFLECTION_INPUT"]);
-        reflective_text.text = reflective_text.text.Replace("<feeling reflection>", GameData.user_inputs["FEELING_REFLECTION_INPUT"]);
+        var person_mood = "";
+        var person_pov = "";
+        var time_mood = "";
+        var time_pov = "";
+        if ((bool)GameData.variables["$person_mood_connection"])
+        {
+            person_mood = "My feelings towards the person in my dream may be related to the overall tone of my dream.";
+        }
+        else 
+        {
+            person_mood = "";
+        }
+        if ((bool)GameData.variables["$person_pov_connection"])
+        {
+            person_pov = "The closeness I have with the person from my dreams could explain the perspective of my dream.";
+        }
+        else
+        {
+            person_pov = "";
+        }
+        if ((bool)GameData.variables["$time_mood_connection"])
+        {
+            time_mood = "My feelings towards the point in time that my dream took place seems to be connected to the overall tone of my dream.";
+        }
+        else
+        {
+            time_mood = "";
+        }
+        if ((bool)GameData.variables["$time_pov_connection"])
+        {
+            time_pov = "The importance that I place on the point in time in my dream seems could be represented through the perspective of my dream.";
+        }
+        else
+        {
+            time_pov = "";
+        }
+        reflective_text.text = reflective_text.text.Replace("$person_mood_connection", person_mood);
+        reflective_text.text = reflective_text.text.Replace("$person_pov_connection", person_pov);
+        reflective_text.text = reflective_text.text.Replace("$time_mood_connection", time_mood);
+        reflective_text.text = reflective_text.text.Replace("$time_pov_connection", time_pov);
 
         date_text.text = System.DateTime.Now.ToShortDateString();
     }

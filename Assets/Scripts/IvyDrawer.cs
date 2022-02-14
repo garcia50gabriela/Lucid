@@ -194,7 +194,7 @@ public class IvyDrawer : MonoBehaviour
             foreach (Transform child in ivy_child.transform)
             {
                 var color = child.GetComponent<Renderer>().material.color;
-                child.GetComponent<Renderer>().material.color = new Color(color.r - (timePassed / 25000f), color.g - (timePassed/25000f), color.b - (timePassed / 2500f), color.a);
+                child.GetComponent<Renderer>().material.color = new Color(color.r - ((timePassed - 8) * 0.001f), color.g - ((timePassed - 8) * 0.001f), color.b - ((timePassed - 8) * 0.001f), color.a);
             }
         }
     }

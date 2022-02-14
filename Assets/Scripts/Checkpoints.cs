@@ -60,20 +60,20 @@ public class Checkpoints : MonoBehaviour
             "[P] You must really like these flowers, I'm sorry I crushed them.",
             "[L][S] It's not that, they keep the nightmares away...",
             "[L][S] Ever since I started tending to them the nightmares have stayed away.",
-            "[P] Nightmares? I have those sometimes, it feels like having your dreams taken from you.",
-            "[L][S] I don't have them. The Dreamer has them, and it's my job to keep them away."}
+            "[P] Nightmares? I have those sometimes, they make me feel stuck or frozen.",
+            "[L][S] I mean The Dreamer's nightmares, and it's my job to keep them away."}
         },
         {3, new string[] {
-            "[P] This Dreamer person must be pretty special to have someone taking care of their dreams like this.",
-            "[L][H] I guess so, I've never met them, per say. I just showed up here one day and figured out what to do after awhile.",
-            "[P] Sounds like you're meant to be here. Maybe I'll figure out why I'm here too.",
+            "[P] So is this what you were meant to do?",
+            "[L][H] I guess so... to be honest, I've been so busy I haven't had time to think about why I'm here.",
+            "[P] Maybe I'll figure out why I'm here too.",
             "[L][H] You're probably just a memory of someone The Dreamer knew. Memories float through here a lot... until they're forgotten.",
             "[P] Well that's just great! So I'll be stuck here until I'm forgotten?? What then?",
-            "[L][S] I don't know! I'm stuck here too! I figured I might as well make it enjoyable for myself by keeping the place nice.",
+            "[L][S] I don't know! I'm stuck here too! So we should keep things nice for ourselves while we're here.",
             "[L][S] Things go bad around here when the nightmares come."}
         },
         {4, new string[] {
-            "[L][A] I think the nightmares are making their way up the mountain.",
+            "[L][A] I think the nightmares are making their way up the mountain. I think I saw one.",
             "[P] Ugh, I'm already stuck in someone else's dream, the last thing I want is to be stuck in their nightmares.",
             "[L][A] You and me both!",
             "[L][A] Maybe if The Dreamer came around here once and awhile, I could actually get something done around here."}
@@ -87,7 +87,7 @@ public class Checkpoints : MonoBehaviour
             "[L][H] HA I think you would KNOW if you were The Dreamer. C'mon we don't have much time."}
         },
         {6, new string[] {
-            "[L][W] This looks bad, the nightmares have made it to the castle.",
+            "[L][W] This looks bad, the nightmares have made it into the castle.",
             "[P] I know my wake-self is out there, and I know they're listening..",
             "[L][W] What are you talking about?",
             "[P] Hey you! Yeah, YOU!!",

@@ -28,6 +28,10 @@ public static class GameData
         {"$dream_time", "past" },
         {"$person", "friend" },
         {"$perspective", "first" },
+        {"$person_mood_connection", true },
+        {"$person_pov_connection", true },
+        {"$time_mood_connection", true},
+        {"$time_pov_connection", true }
     };
     public static bool story_mode = false;
     public static int story_index = 0;
