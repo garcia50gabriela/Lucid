@@ -36,7 +36,7 @@ public class final_journal : MonoBehaviour
         }
         if ((bool)GameData.variables["$person_pov_connection"])
         {
-            person_pov = "The closeness I have with the person from my dreams could explain the perspective of my dream.";
+            person_pov = "The closeness I have, or lack of, with the person from my dreams could explain the perspective of my dream.";
         }
         else
         {
@@ -44,7 +44,7 @@ public class final_journal : MonoBehaviour
         }
         if ((bool)GameData.variables["$time_mood_connection"])
         {
-            time_mood = "My feelings towards the point in time that my dream took place seems to be connected to the overall tone of my dream.";
+            time_mood = "My feelings towards the point in time that my dream took place in seems to be connected to the overall tone of my dream.";
         }
         else
         {
@@ -52,7 +52,7 @@ public class final_journal : MonoBehaviour
         }
         if ((bool)GameData.variables["$time_pov_connection"])
         {
-            time_pov = "The importance that I place on the point in time in my dream seems could be represented through the perspective of my dream.";
+            time_pov = "The importance that I place on the point in time in my dream seems like it could be represented through the perspective of my dream.";
         }
         else
         {

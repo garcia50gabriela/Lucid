@@ -16,9 +16,9 @@ position: 862,-89
 ---
 It can be fun to think about! Do you think you could remember a recent dream?
 -> Yes, I have one in mind.
-    << jump DREAM>>
+    <<jump DREAM>>
 -> No, I can't think of any.
-    << jump NODREAM>>
+    <<jump NODREAM>>
 ===
 title: DREAM
 tags: 
@@ -26,7 +26,7 @@ colorID: 0
 position: 982,-309
 ---
 That's great, well I am your dream journal, so let's try writing about it.
-<< jump JOURNAL>>
+<<jump JOURNAL>>
 ===
 title: NODREAM
 tags: 
@@ -35,7 +35,7 @@ position: 1202,-309
 ---
 That's too bad, well, journaling can sometimes help people remember their dreams.
 We can still give it a try by answering questions about your dreams in general.
-<< jump JOURNAL>>
+<<jump JOURNAL>>
 ===
 title: JOURNAL
 tags: 
@@ -45,13 +45,13 @@ position: 1102,-529
 How were you feeling during the dream?
 -> I felt good.
     <<set $dream_mood to "positive">>
-    << jump SLEEPQUALITY>>
+    <<jump SLEEPQUALITY>>
 -> I felt fine.
     <<set $dream_mood to "neutral">>
-    << jump SLEEPQUALITY>>
+    <<jump SLEEPQUALITY>>
 -> I felt bad.
     <<set $dream_mood to "negative">>
-    << jump SLEEPQUALITY>>
+    <<jump SLEEPQUALITY>>
 ===
 title: SLEEPQUALITY
 tags: 
@@ -68,13 +68,13 @@ position: 1328,-678
 Did you sleep well that night?
 -> Yes, I slept like a baby.
     <<set $dream_quality to "high">>
-    << jump PLACE>>
+    <<jump PLACE>>
 -> It was a normal night's sleep
     <<set $dream_quality to "average">>
-    << jump PLACE>>
+    <<jump PLACE>>
 -> No, I was tossing and turning all night.
     <<set $dream_quality to "low">>
-    << jump PLACE>>
+    <<jump PLACE>>
 ===
 title: PLACE
 tags: 
@@ -91,13 +91,13 @@ position: 1513,-845
 Based on the events or things there, when did the dream seem to take place?
 -> In the past.
     <<set $dream_time to "past">>
-    << jump PERSON>>
+    <<jump PERSON>>
 -> In the present.
     <<set $dream_time to "present">>
-    << jump PERSON>>
+    <<jump PERSON>>
 -> In the future.
     <<set $dream_time to "future">>
-    << jump PERSON>>
+    <<jump PERSON>>
 ===
 title: PERSON
 tags: 
@@ -107,13 +107,13 @@ position: 1679,-1010
 Was anyone else in the dream?
 -> There were current or former friends there.
     <<set $person to "friend">>
-    << jump PERSPECTIVE>>
+    <<jump PERSPECTIVE>>
 -> My family was there.
     <<set $person to "family">>
-    << jump PERSPECTIVE>>
+    <<jump PERSPECTIVE>>
 -> There were people I don't know very well or at all.
     <<set $person to "acquaintance">>
-    << jump PERSPECTIVE>>
+    <<jump PERSPECTIVE>>
 ===
 title: PERSPECTIVE
 tags: 
@@ -162,10 +162,10 @@ position: 2486,-267
 Do you feel [select value={$perspective} first="close to" third="disconnected from" mixed="like your relationship is changing with" /] the {$person} in your dream?
 -> Yes.
     <<set $person_pov_connection to true>>
-    << jump JOURNAL1END>>
+    <<jump JOURNAL1END>>
 -> No.
     <<set $person_pov_connection to false>>
-    << jump JOURNAL1END>>
+    <<jump JOURNAL1END>>
 ===
 title: JOURNAL1END
 tags: 
@@ -195,10 +195,10 @@ position: 3216,178
 Do you feel [select value={$dream_mood} positive="optimistic about" neutral="confused about" negative="worried or unproud of" /] the {$dream_time}?
 -> Yes.
     <<set $time_mood_connection to true>>
-    << jump TIMEPERSPECTIVE>>
+    <<jump TIMEPERSPECTIVE>>
 -> No.
     <<set $time_mood_connection to false>>
-    << jump TIMEPERSPECTIVE>>
+    <<jump TIMEPERSPECTIVE>>
 ===
 
 title: TIMEPERSPECTIVE
@@ -209,10 +209,10 @@ position: 3454,-261
 Do you feel that the {$dream_time} event that took place in your dream [select value={$perspective} first="is vital" third="is unimportant" mixed="could be important" /] to who you are now?
 -> Yes.
     <<set $time_pov_connection to true>>
-    << jump JOURNAL2END>>
+    <<jump JOURNAL2END>>
 -> No.
     <<set $time_pov_connection to false>>
-    << jump JOURNAL2END>>
+    <<jump JOURNAL2END>>
 ===
 title: JOURNAL2END
 tags: 
