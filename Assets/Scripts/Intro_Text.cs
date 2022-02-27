@@ -79,7 +79,7 @@ public class Intro_Text : MonoBehaviour
         new JournalPrompt("FEELING_REFLECTION_INPUT", "Is there anything you've done recently that could make you feel <feeling> or <atmosphere> towards yourself?", InputType.OPEN_TEXT, null),
     };
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         if (date_text != null) 
         {
@@ -246,7 +246,7 @@ public class Intro_Text : MonoBehaviour
     {
         journal_background.SetActive(false);
         gameObject.SetActive(false);
-    }
+    }*/
 
 
 }

@@ -34,7 +34,7 @@ public class dream_journal : MonoBehaviour
         {"THING_FEELING_DROPDOWN", new string[] {"would never do.", "would like to do.", "would feel indifferent about doing.", "have already done." } },
     };
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         journalText.text = (GameData.user_inputs["NAME_INPUT"] + "'s Dream\n" +
             "I had a dream I was at " + GameData.user_inputs["LOCATION_DROPDOWN"] +
@@ -80,5 +80,5 @@ public class dream_journal : MonoBehaviour
         input_phase_3.text = "Doing that thing with that person is something I " + input_field_3_text.text;
         dropdown3_gameobject.SetActive(false);
         phase3fog.SetActive(false);
-    }
+    }*/
 }

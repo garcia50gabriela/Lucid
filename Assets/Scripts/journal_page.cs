@@ -7,40 +7,42 @@ public class journal_page : MonoBehaviour
 {
     public GameObject journal_background;
     public Text journal_text;
-    public string value_name;
-    public Text drop_down_input;
-    public Text text_input;
+    private int page_index = -1;
+    public List<GameObject> ReviewPages;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        journal_text.text = journal_text.text.Replace("<place time>", GameData.user_inputs["LOCATION_DROPDOWN"] + " during the " + GameData.user_inputs["TIME_DAY_DROPDOWN"]);
-        journal_text.text = journal_text.text.Replace("<feeling>", GameData.user_inputs["FEELING_DROPDOWN"]);
-        journal_text.text = journal_text.text.Replace("<atmosphere>", GameData.user_inputs["ATMOSPHERE_DROPDOWN"]);
 
     }
 
-    public void submit_and_close()
+
+    public void open()
     {
-        save_inputs();
+        journal_background.SetActive(true);
+        gameObject.SetActive(true);
+    }
+    public void close()
+    {
+        ReviewPages[page_index].SetActive(false);
+        page_index = -1;
         journal_background.SetActive(false);
         gameObject.SetActive(false);
     }
-
-    void save_inputs() 
+    public void next()
     {
-        if (drop_down_input != null) 
+        if (GameData.journal_index > 0 && page_index < GameData.journal_index - 1) 
         {
-            GameData.user_inputs[value_name + "_DROPDOWN"] = drop_down_input.text;
-        }
-        if (text_input != null)
-        {
-            GameData.user_inputs[value_name + "_INPUT"] = text_input.text;
+            if (page_index > 0) 
+            {
+                ReviewPages[page_index].SetActive(false);
+            }
+            page_index++;
+            ReviewPages[page_index].SetActive(true);
         }
     }
 }

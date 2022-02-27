@@ -206,6 +206,7 @@ public class Checkpoints : MonoBehaviour
     [Yarn.Unity.YarnCommand("close_journal")]
     public void closeJournal() 
     {
+        GameData.journal_index += 1;
         journal_background.SetActive(false);
         journal_portion.SetActive(false);
         gameObject.SetActive(false);

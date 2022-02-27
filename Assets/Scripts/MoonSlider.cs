@@ -25,7 +25,7 @@ public class MoonSlider : MonoBehaviour
         {
             mousePressed = false;
         }
-        if (Input.mousePosition.x > 1100 & Input.mousePosition.x < 1200 & Input.mousePosition.y > 500 & Input.mousePosition.y < 600) 
+        if (Input.mousePosition.x > 1000 & Input.mousePosition.x < 1200 & Input.mousePosition.y > 450 & Input.mousePosition.y < 600) 
         {
             if (mousePressed)
             {

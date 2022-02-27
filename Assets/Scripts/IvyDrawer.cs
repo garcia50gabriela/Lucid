@@ -89,7 +89,7 @@ public class IvyDrawer : MonoBehaviour
                 float dist_from_last_ivy = Vector3.Distance(hit.point, lastIvy.transform.position);
                 if (hit.transform.tag == "trellis")
                 {
-                    if (dist_from_last_ivy >= 0.015f && dist_from_last_ivy <= 0.15f)
+                    if (dist_from_last_ivy >= 0.015f && dist_from_last_ivy <= 0.05f)
                     {
                         float dist_from_first_ivy = Vector3.Distance(hit.point, ivy.transform.position);
                         if (dist_from_first_ivy < Mathf.Abs(1f))
