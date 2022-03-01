@@ -37,11 +37,23 @@ public class journal_page : MonoBehaviour
     {
         if (GameData.journal_index > 0 && page_index < GameData.journal_index - 1) 
         {
-            if (page_index > 0) 
+            if (page_index >= 0) 
             {
                 ReviewPages[page_index].SetActive(false);
             }
             page_index++;
+            ReviewPages[page_index].SetActive(true);
+        }
+    }
+    public void previous()
+    {
+        if (page_index > 0 && page_index < GameData.journal_index)
+        {
+            if (page_index >= 0)
+            {
+                ReviewPages[page_index].SetActive(false);
+            }
+            page_index--;
             ReviewPages[page_index].SetActive(true);
         }
     }
