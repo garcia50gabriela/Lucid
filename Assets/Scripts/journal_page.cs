@@ -28,7 +28,11 @@ public class journal_page : MonoBehaviour
     }
     public void close()
     {
-        ReviewPages[page_index].SetActive(false);
+        if (page_index >= 0) 
+        {
+            ReviewPages[page_index].SetActive(false);
+        }
+        
         page_index = -1;
         journal_background.SetActive(false);
         gameObject.SetActive(false);
@@ -42,6 +46,7 @@ public class journal_page : MonoBehaviour
                 ReviewPages[page_index].SetActive(false);
             }
             page_index++;
+            replace_variables_in_text(ReviewPages[page_index]);
             ReviewPages[page_index].SetActive(true);
         }
     }
@@ -54,7 +59,17 @@ public class journal_page : MonoBehaviour
                 ReviewPages[page_index].SetActive(false);
             }
             page_index--;
+            replace_variables_in_text(ReviewPages[page_index]);
             ReviewPages[page_index].SetActive(true);
+        }
+    }
+
+    void replace_variables_in_text(GameObject gameobject) 
+    {
+        print(gameobject.GetComponent(typeof(Text)));
+        if (gameobject.GetComponent(typeof(Text)) != null) 
+        {
+            gameobject.GetComponent<Text>().text = gameobject.GetComponent<Text>().text.Replace("dream_mood_text", GameData.dream_mood_text);
         }
     }
 }

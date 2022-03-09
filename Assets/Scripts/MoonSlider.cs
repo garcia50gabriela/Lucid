@@ -29,7 +29,7 @@ public class MoonSlider : MonoBehaviour
         {
             if (mousePressed)
             {
-                transform.Rotate(new Vector3(0, (1150 - Input.mousePosition.x) * 10, 0) * Time.deltaTime * 1f);
+                transform.Rotate(new Vector3(0, (1100 - Input.mousePosition.x) * 10, 0) * Time.deltaTime * 1f);
             }
         }
         
