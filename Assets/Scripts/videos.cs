@@ -6,6 +6,7 @@ using UnityEngine.Video;
 public class videos : MonoBehaviour
 {
     public VideoPlayer video_player;
+    public GameObject endText;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +16,9 @@ public class videos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (video_player.isPaused) 
+        if (video_player.isPaused)
         {
-            gameObject.SetActive(false);
+            endText.SetActive(true);
         }
     }
 }
