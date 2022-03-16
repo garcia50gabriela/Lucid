@@ -66,10 +66,91 @@ public class journal_page : MonoBehaviour
 
     void replace_variables_in_text(GameObject gameobject) 
     {
-        print(gameobject.GetComponent(typeof(Text)));
+        
         if (gameobject.GetComponent(typeof(Text)) != null) 
         {
-            gameobject.GetComponent<Text>().text = gameobject.GetComponent<Text>().text.Replace("dream_mood_text", GameData.dream_mood_text);
+            string t = gameobject.GetComponent<Text>().text;
+            t = t.Replace("dream_mood_text", GameData.dream_mood_text);
+            t = t.Replace("dream_quality_text", GameData.dream_quality_text);
+            t = t.Replace("dream_time_text", GameData.dream_time_text);
+            t = t.Replace("dream_person_text", GameData.dream_person_text);
+            t = t.Replace("dream_perspective_text", GameData.dream_perspective_text);
+            t = t.Replace("dream_perspective_text", GameData.dream_perspective_text);
+
+            if (GameData.variables["$dream_quality"] == "low") 
+            {
+                t = t.Replace("dream_quality_text", GameData.dream_quality_low_text);
+            }
+            if (GameData.variables["$dream_quality"] == "high")
+            {
+                t = t.Replace("dream_quality_text", GameData.dream_quality_high_text);
+            }
+            if (GameData.variables["$dream_quality"] == "normal")
+            {
+                t = t.Replace("dream_quality_text", GameData.dream_quality_normal_text);
+            }
+
+            if ((bool)GameData.variables["$person_mood_connection"])
+            {
+                t = t.Replace("person_mood_text", GameData.person_mood_text_true);
+            }
+            if (!(bool)GameData.variables["$person_mood_connection"])
+            {
+                t = t.Replace("person_mood_text", GameData.person_mood_text_false);
+            }
+
+            if ((bool)GameData.variables["$person_pov_connection"])
+            {
+                t = t.Replace("person_pov_text", GameData.person_pov_text_true);
+            }
+            if (!(bool)GameData.variables["$person_pov_connection"])
+            {
+                t = t.Replace("person_pov_text", GameData.person_pov_text_false);
+            }
+
+            if ((bool)GameData.variables["$time_mood_connection"])
+            {
+                t = t.Replace("time_mood_text", GameData.time_mood_text_true);
+            }
+            if (!(bool)GameData.variables["$time_mood_connection"])
+            {
+                t = t.Replace("time_mood_text", GameData.time_mood_text_false);
+            }
+
+            if ((bool)GameData.variables["$time_pov_connection"])
+            {
+                t = t.Replace("time_pov_text", GameData.time_pov_text_true);
+            }
+            if (!(bool)GameData.variables["$time_pov_connection"])
+            {
+                t = t.Replace("time_pov_text", GameData.time_pov_text_false);
+            }
+            
+            t = t.Replace((string)"$dream_mood", (string)GameData.variables["$dream_mood"]);
+            t = t.Replace((string)"$dream_quality", (string)GameData.variables["$dream_quality"]);
+            t = t.Replace((string)"$dream_time", (string)GameData.variables["$dream_time"]);
+            t = t.Replace((string)"$person", (string)GameData.variables["$person"]);
+            t = t.Replace((string)"$perspective", (string)GameData.variables["$perspective"]);
+
+            if (GameData.variables["$perspective"] == "first")
+            {
+                t = t.Replace("$fondness", "fondness");
+                t = t.Replace("$closeness", "closeness");
+            }
+            if (GameData.variables["$perspective"] == "third")
+            {
+                t = t.Replace("$fondness", "detachment");
+                t = t.Replace("$closeness", "distance");
+            }
+            if (GameData.variables["$perspective"] == "mixed")
+            {
+                t = t.Replace("$fondness", "changing levels attachment");
+                t = t.Replace("$closeness", "change in relationship");
+            }
+
+
+            gameobject.GetComponent<Text>().text = t;
+
         }
     }
 }

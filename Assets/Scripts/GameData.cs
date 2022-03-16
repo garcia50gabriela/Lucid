@@ -43,6 +43,7 @@ public static class GameData
     public static string dream_time_text = "Something about the dream made me think it was happening in the $dream_time.";
     public static string dream_person_text = "I consider the people in my dream to be $person.";
     public static string dream_perspective_text = "I dreamnt in a $perspective-person perspective.";
+
     public static string person_mood_text_true = "The $dream_mood feelings I have towards the $person from my dream, may be related to the $dream_mood tone of my dream.";
     public static string person_mood_text_false = "I don't have $dream_mood feelings towards the $person from my dream, they may symbolize something else that I do have $dream_mood feelings towards.";
     public static string person_pov_text_true = "The $perspective-person perspective may represent the $closeness I feel towards the $person for my dream or what they represent.";

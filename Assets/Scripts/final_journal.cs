@@ -28,40 +28,65 @@ public class final_journal : MonoBehaviour
         var time_pov = "";
         if ((bool)GameData.variables["$person_mood_connection"])
         {
-            person_mood = "My feelings towards the person in my dream may be related to the overall tone of my dream.";
+            person_mood = GameData.person_mood_text_true;
         }
         else 
         {
-            person_mood = "";
+            person_mood = GameData.person_mood_text_false;
         }
         if ((bool)GameData.variables["$person_pov_connection"])
         {
-            person_pov = "The closeness I have, or lack of, with the person from my dreams could explain the perspective of my dream.";
+            person_pov = GameData.person_pov_text_true;
         }
         else
         {
-            person_pov = "";
+            person_pov = GameData.person_pov_text_false;
         }
         if ((bool)GameData.variables["$time_mood_connection"])
         {
-            time_mood = "My feelings towards the point in time that my dream took place in seems to be connected to the overall tone of my dream.";
+            time_mood = GameData.time_mood_text_true;
         }
         else
         {
-            time_mood = "";
+            time_mood = GameData.time_mood_text_false;
         }
         if ((bool)GameData.variables["$time_pov_connection"])
         {
-            time_pov = "The importance that I place on the point in time in my dream seems like it could be represented through the perspective of my dream.";
+            time_pov = GameData.time_pov_text_true;
         }
         else
         {
-            time_pov = "";
+            time_pov = GameData.time_pov_text_false;
         }
-        reflective_text.text = reflective_text.text.Replace("$person_mood_connection", person_mood);
-        reflective_text.text = reflective_text.text.Replace("$person_pov_connection", person_pov);
-        reflective_text.text = reflective_text.text.Replace("$time_mood_connection", time_mood);
-        reflective_text.text = reflective_text.text.Replace("$time_pov_connection", time_pov);
+
+        string t = reflective_text.text;
+        t = t.Replace("$person_mood_connection", person_mood);
+        t = t.Replace("$person_pov_connection", person_pov);
+        t = t.Replace("$time_mood_connection", time_mood);
+        t = t.Replace("$time_pov_connection", time_pov);
+
+        t = t.Replace((string)"$dream_mood", (string)GameData.variables["$dream_mood"]);
+        t = t.Replace((string)"$dream_quality", (string)GameData.variables["$dream_quality"]);
+        t = t.Replace((string)"$dream_time", (string)GameData.variables["$dream_time"]);
+        t = t.Replace((string)"$person", (string)GameData.variables["$person"]);
+        t = t.Replace((string)"$perspective", (string)GameData.variables["$perspective"]);
+
+        if (GameData.variables["$perspective"] == "first")
+        {
+            t = t.Replace("$fondness", "fondness");
+            t = t.Replace("$closeness", "closeness");
+        }
+        if (GameData.variables["$perspective"] == "third")
+        {
+            t = t.Replace("$fondness", "detachment");
+            t = t.Replace("$closeness", "distance");
+        }
+        if (GameData.variables["$perspective"] == "mixed")
+        {
+            t = t.Replace("$fondness", "changing levels attachment");
+            t = t.Replace("$closeness", "change in relationship");
+        }
+        reflective_text.text = t;
 
         date_text.text = System.DateTime.Now.ToShortDateString();
     }

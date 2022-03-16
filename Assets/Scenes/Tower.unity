@@ -27478,8 +27478,9 @@ GameObject:
   - component: {fileID: 1255028237}
   - component: {fileID: 1255028236}
   - component: {fileID: 1255028235}
+  - component: {fileID: 1255028239}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: nightmares
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27574,6 +27575,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1255028239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255028234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96101daf0da6c784593e92b2d9be78d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1257078982
 GameObject:
   m_ObjectHideFlags: 0
@@ -42639,6 +42652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   video_player: {fileID: 1633410209}
+  endText: {fileID: 0}
 --- !u!114 &1963968842
 MonoBehaviour:
   m_ObjectHideFlags: 0

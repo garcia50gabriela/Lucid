@@ -173,18 +173,17 @@ colorID: 0
 position: 2726,-709
 ---
 <<if $person_mood_connection is true>>
-	The {$person} in your dream seems to be related to the {$dream_mood} tone of your dream.
-    That person may represent a shared quality about yourself that you [select value={$dream_mood} positive="like" negative="dislike" neutral="have mixed feelings about" /].
+    Since you felt {$dream_mood} towards the {$person} from your dream, that person may be related to the {$dream_mood} tone of your dream.
 <<else>>
-	The {$person} in your dream doesn't seems to be related to the {$dream_mood} tone of your dream.
+	Since you didn't feel {$dream_mood} towards the {$person} from your dream, that person doesn't seem to be related to the tone of your dream.
 <<endif>>
-
+The {$person} from your dream may represent a shared quality about yourself that you [select value={$dream_mood} positive="like" negative="dislike" neutral="have mixed feelings about" /].
 <<if $person_pov_connection is true>>
-	The {$person} in your dream seems to be connected to the {$perspective}-person perspective of your dream.
-    That person could represent a part of your life or memory that you feel [select value={$perspective} first="is repeating itself or happening again" third="like you've moved on from" mixed="you miss" /].
+	Since you felt [select value={$perspective} first="close to" third="disconnected from" mixed="like your relationship is changing with" /] the {$person} in your dream, they seem to be connected to the {$perspective}-person perspective of your dream.  
 <<else>>
-	The {$person} in your dream doesn't seem to be connected to the {$perspective}-person perspective of your dream.
+    You felt [select value={$perspective} first="close to" third="disconnected from" mixed="like your relationship is changing with" /] the {$person} in your dream, which suggests something different from the {$perspective}-person perspective of your dream.
 <<endif>>
+They could represent a part of your life or memory that you feel [select value={$perspective} first="is repeating itself or happening again" third="like you've moved on from" mixed="you miss" /].
 <<close_journal JournalCheckpoint1>>
 ===
 title: JOURNAL2
@@ -220,18 +219,17 @@ colorID: 0
 position: 3694,-701
 ---
 <<if $time_mood_connection is true>>
-	The {$dream_time} setting of your dream seems to be related to the {$dream_mood} tone of your dream.
-    The {$dream_time} may represent something that is making you feel [select value={$dream_mood} positive="happy" negative="sad" neutral="detached" /]?
+	Since you felt {$dream_mood} towards the {$dream_time} setting of your dream, it seems to be related to the {$dream_mood} tone of your dream.
 <<else>>
-	The {$dream_time} setting of your dream doesn't seems to be related to the {$dream_mood} tone of your dream.
+    Since you felt differently than {$dream_mood} towards the {$dream_time} setting of your dream, it doesn't seem to be related to the tone of your dream.
 <<endif>>
-
+The {$dream_time} may represent something that is making you feel [select value={$dream_mood} positive="happy" negative="sad" neutral="detached" /].
 <<if $time_pov_connection is true>>
-	The {$dream_time} setting of your dream seems to be connected to the {$perspective}-person perspective of your dream.
-    You may feel [select value={$perspective} first="fond of or excited for" third="like you've moved on from" mixed="unsure or confused about" /] the {$dream_time}.
+	Your perspective on the {$dream_time} setting of your dream seems to be connected to the {$perspective}-person perspective of your dream.
 <<else>>
-	The {$dream_time} setting of your dream doesn't seems to be connected to the {$perspective}-person perspective of your dream.
+	Your perspective on the {$dream_time} setting of your dream doesn't seems to be connected to the {$perspective}-person perspective of your dream.
 <<endif>>
+ You may feel [select value={$perspective} first="fond of or excited for" third="like you've moved on from" mixed="unsure or confused about" /] the {$dream_time}.
 <<close_journal JournalCheckpoint2>>
 ===
 title: JOURNAL3
@@ -248,13 +246,11 @@ position: 4246,178
 <<endif>>
 
 <<if $person_mood_connection is true ||  $person_pov_connection is true ||  $time_mood_connection is true ||  $time_pov_connection is true>>
-    It seems like there's some connections between the aspects you wrote about in your dreams.
-    It can be helpful to try and think about what those things might mean to you.
+    It seems like there's some connections between the aspects you wrote about in your dreams. It can be helpful to try and think about what those things might mean to you.
 <<endif>>
 
 <<if $person_mood_connection is false && $person_pov_connection is false && $time_mood_connection is false && $time_pov_connection is false>>
-    There didn't seem to be any connections between the aspects in your dream, and that's okay.
-    There might be other parts of you dream that are worth thinking about.
+    There didn't seem to be any connections between the aspects in your dream, and that's okay. There might be other parts of you dream that are worth thinking about.
 <<endif>>
 <<jump JOUNRAL3END>>
 ===
