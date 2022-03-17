@@ -21,7 +21,6 @@ public class nightmare_chase : MonoBehaviour
         //calculate what the new Y position will be
         float newY = Mathf.Sin(Time.time * speed);
         //set the object's Y to the new calculated Y
-        print(pos.y);
         transform.position = new Vector3(pos.x, start_y + (newY * height), pos.z);
     }
 }
